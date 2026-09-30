@@ -283,6 +283,7 @@
   const fab = $('#fab');
   const chatEl = $('#chat');
   const ctaEl = $('#baixar');
+  const tourEl = $('#tour');
   let lastY = scrollY;
   const navLinks = $$('.nav__links a');
   const sections = navLinks.map((a) => $(a.getAttribute('href'))).filter(Boolean);
@@ -298,7 +299,7 @@
     // botão do assistente: aparece depois do hero, some sobre o próprio chat
     if (fab) {
       let show = y > innerHeight * .8;
-      [chatEl, ctaEl].forEach((el) => {
+      [chatEl, ctaEl, innerWidth <= 1024 ? tourEl : null].forEach((el) => {
         if (!el) return;
         const r = el.getBoundingClientRect();
         if (r.top < innerHeight && r.bottom > 0) show = false;
@@ -803,6 +804,8 @@
   chaptersEl.innerHTML = CHAPTERS.map(([t, n], i) => `<li><button class="chapter" type="button" data-t="${t}" data-i="${i}" aria-label="${mmss(t)} — ${n}"><span class="chapter__t" aria-hidden="true">${mmss(t)}</span><span>${n}</span>${icon('i-play')}<i class="chapter__bar"></i></button></li>`).join('');
   const chBtns = $$('.chapter', chaptersEl);
   const tourProgress = $('#tourProgress');
+  const tourPhone = tourVideo.closest('.phone');
+  let lastChapter = -1;
   const updateChapters = () => {
     const t = tourVideo.currentTime, dur = tourVideo.duration || 49.4;
     let idx = 0;
@@ -813,10 +816,25 @@
       $('.chapter__bar', b).style.width = i === idx ? `${clamp((t - s) / (e - s), 0, 1) * 100}%` : '0';
     });
     tourProgress.style.transform = `scaleX(${clamp(t / dur, 0, 1)})`;
+    // no celular os capítulos viram uma faixa horizontal: mantém o capítulo atual visível nela
+    if (idx !== lastChapter) {
+      lastChapter = idx;
+      if (chaptersEl.scrollWidth > chaptersEl.clientWidth + 4) {
+        const li = chBtns[idx].parentElement;
+        const pad = parseFloat(getComputedStyle(chaptersEl).paddingLeft) || 0;
+        chaptersEl.scrollTo({ left: Math.max(0, li.offsetLeft - pad), behavior: motionOK ? 'smooth' : 'auto' });
+      }
+    }
   };
   tourVideo.addEventListener('timeupdate', updateChapters);
   tourVideo.addEventListener('ended', () => { tourVideo.currentTime = 0; tourVideo.play().catch(() => {}); });
   chBtns.forEach((b) => b.addEventListener('click', () => {
+    // garante que o vídeo esteja na tela ao escolher um capítulo
+    const r = tourPhone.getBoundingClientRect();
+    if (r.top < 70 || r.bottom > innerHeight) {
+      const media = tourPhone.parentElement.getBoundingClientRect();
+      window.scrollTo({ top: scrollY + media.top - 84, behavior: motionOK ? 'smooth' : 'auto' });
+    }
     loadVideo(tourVideo);
     const go = () => { tourVideo.currentTime = +b.dataset.t + .05; tourVideo.play().catch(() => {}); updateChapters(); };
     if (tourVideo.readyState >= 1) go(); else tourVideo.addEventListener('loadedmetadata', go, { once: true });
