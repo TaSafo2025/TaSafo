@@ -63,7 +63,7 @@
   if (cursor && finePointer && motionOK) {
     document.documentElement.classList.add('has-cursor');
     cursor.classList.add('is-hidden');
-    window.addEventListener('pointermove', () => cursor.classList.remove('is-hidden'), { once: true });
+    window.addEventListener('pointermove', (e) => { if (e.pointerType !== 'touch') cursor.classList.remove('is-hidden'); }, { passive: true });
     const dot = $('.cursor__dot', cursor), ring = $('.cursor__ring', cursor);
     let rx = pointer.x, ry = pointer.y;
     const interactive = 'a, button, [role="button"], .plate, .shot, .chip, label[for], input[type="range"], summary';
@@ -76,7 +76,6 @@
     document.addEventListener('pointerdown', () => cursor.classList.add('is-down'));
     document.addEventListener('pointerup', () => cursor.classList.remove('is-down'));
     document.addEventListener('mouseleave', () => cursor.classList.add('is-hidden'));
-    document.addEventListener('mouseenter', () => cursor.classList.remove('is-hidden'));
     const loop = () => {
       rx = lerp(rx, pointer.x, .18); ry = lerp(ry, pointer.y, .18);
       dot.style.transform = `translate3d(${pointer.x}px, ${pointer.y}px, 0)`;
@@ -203,7 +202,7 @@
 
   /* Troca de telas no celular do hero */
   const heroLayers = $$('#heroScreens .screen-layer');
-  if (heroLayers.length > 1) {
+  if (heroLayers.length > 1 && motionOK) {
     let i = 0;
     setInterval(() => {
       if (!heroVisible || document.hidden) return;
@@ -283,6 +282,7 @@
   const progress = $('.scroll-progress');
   const fab = $('#fab');
   const chatEl = $('#chat');
+  const ctaEl = $('#baixar');
   let lastY = scrollY;
   const navLinks = $$('.nav__links a');
   const sections = navLinks.map((a) => $(a.getAttribute('href'))).filter(Boolean);
@@ -298,10 +298,11 @@
     // botão do assistente: aparece depois do hero, some sobre o próprio chat
     if (fab) {
       let show = y > innerHeight * .8;
-      if (chatEl) {
-        const r = chatEl.getBoundingClientRect();
+      [chatEl, ctaEl].forEach((el) => {
+        if (!el) return;
+        const r = el.getBoundingClientRect();
         if (r.top < innerHeight && r.bottom > 0) show = false;
-      }
+      });
       fab.classList.toggle('is-visible', show);
     }
     // link ativo
@@ -487,6 +488,7 @@
     const v = chatInput.value.trim();
     if (!v || busy) return;
     chatInput.value = '';
+    chatChips.forEach((x) => x.classList.remove('is-active'));
     ask(route(v), v);
   });
 
@@ -553,7 +555,7 @@
       if (filter === 'fav' && !favs.has(it.code)) return false;
       if (filter !== 'all' && filter !== 'fav' && it.sev !== filter) return false;
       if (!q) return true;
-      const hay = normalize(`${it.code} ${it.art} ${it.desc} ${it.kw || ''}`);
+      const hay = normalize(`${it.code} ${it.art} ${it.desc} ${it.sev} ${it.kw || ''}`);
       if (hay.includes(q)) return true;
       if (qDigits && qDigits.length >= 3 && (it.code.replace('-', '').includes(qDigits) || it.art.replace(/[^0-9]/g, ' ').split(' ').includes(qDigits))) return true;
       return false;
@@ -606,7 +608,7 @@
   const calcRange = $('#calcRange');
   const calcResult = $('#calcResult');
   const marker = $('#gaugeMarker');
-  const parseVal = (s) => { const v = parseFloat(String(s).replace(',', '.')); return isNaN(v) ? null : v; };
+  const parseVal = (s) => { const t = String(s).trim(); if (!/^\d+([.,]\d+)?$/.test(t)) return null; return parseFloat(t.replace(',', '.')); };
   const fmt2 = (v) => v.toFixed(2).replace('.', ',');
   const gaugePos = (v) => {
     // escala por zona: 0–0,04 | 0,05–0,33 | 0,34–0,60
@@ -618,7 +620,8 @@
   const renderCalc = (v) => {
     if (v === null || v < 0) {
       calcResult.className = 'result';
-      calcResult.innerHTML = '<p>Digite o valor medido pelo etilômetro, em mg/L.</p>';
+      calcResult.innerHTML = '<p>Digite o valor medido pelo etilômetro, em mg/L (ex.: 0,42).</p>';
+      lastState = '';
       return;
     }
     const r = Math.round(v * 100) / 100;
@@ -768,11 +771,11 @@
   const tourVideo = $('#tourVideo');
   const CHAPTERS = [
     [0, 'Início'], [2, 'Ficha da 518-51'], [8, 'Quando autuar'], [13, 'Orientação aberta'], [19, 'Quando não autuar'],
-    [21, 'Outras situações e texto do AIT'], [27, 'Menu'], [30, 'Placas de regulamentação'], [41, 'Detalhe da placa R-9'], [47, 'Favoritos']
+    [21, 'Outras situações e texto do AIT'], [28, 'Menu'], [30, 'Placas de regulamentação'], [41, 'Detalhe da placa R-9'], [48, 'Favoritos']
   ];
   const chaptersEl = $('#chapters');
   const mmss = (s) => `0:${String(Math.floor(s)).padStart(2, '0')}`;
-  chaptersEl.innerHTML = CHAPTERS.map(([t, n], i) => `<button class="chapter" type="button" role="listitem" data-t="${t}" data-i="${i}"><span class="chapter__t">${mmss(t)}</span><span>${n}</span>${icon('i-play')}<i class="chapter__bar"></i></button>`).join('');
+  chaptersEl.innerHTML = CHAPTERS.map(([t, n], i) => `<li><button class="chapter" type="button" data-t="${t}" data-i="${i}" aria-label="${mmss(t)} — ${n}"><span class="chapter__t" aria-hidden="true">${mmss(t)}</span><span>${n}</span>${icon('i-play')}<i class="chapter__bar"></i></button></li>`).join('');
   const chBtns = $$('.chapter', chaptersEl);
   const tourProgress = $('#tourProgress');
   const updateChapters = () => {
@@ -829,7 +832,7 @@
   rail.innerHTML = SHOTS.map(([f, k, c], i) => `
     <button class="shot" type="button" data-i="${i}" aria-label="Ampliar tela: ${escapeHTML(c)}">
       <span class="phone"><span class="phone__screen" style="display:block"><img src="${PRINTS}${f}.webp" width="720" height="1564" alt="${escapeHTML(c)}" loading="lazy" decoding="async" draggable="false" /></span></span>
-      <figcaption><small>${k}</small>${c}</figcaption>
+      <span class="shot__cap"><small>${k}</small>${c}</span>
     </button>`).join('');
   const railProg = $('#railProgress');
   const updateRail = () => {

@@ -290,7 +290,7 @@ src="https://www.facebook.com/tr?id=980139047822922&ev=PageView&noscript=1"
         <p class="disclaimer" data-reveal><svg aria-hidden="true"><use href="#i-info"/></svg><span>O assistente é uma ferramenta de apoio: a decisão final e a responsabilidade pelo auto são sempre do agente.</span></p>
       </div>
 
-      <div class="chat" id="chat" data-reveal="right" aria-label="Demonstração do assistente de infrações">
+      <div class="chat" id="chat" data-reveal="right" role="region" aria-label="Demonstração do assistente de infrações">
         <div class="chat__head">
           <span class="mascot" data-mascot></span>
           <div>
@@ -305,7 +305,7 @@ src="https://www.facebook.com/tr?id=980139047822922&ev=PageView&noscript=1"
             <div class="msg__bubble">
               <p>Olá! Sou seu assistente de infrações de trânsito.</p>
               <p>Descreva a situação que você presenciou e eu identifico a infração, o artigo do CTB, a gravidade e o valor da multa.</p>
-              <p><strong>Toque num exemplo abaixo</strong> para ver respostas reais do app.</p>
+              <p><strong>Toque num exemplo abaixo</strong> para ver como a resposta chega.</p>
             </div>
           </div>
         </div>
@@ -319,7 +319,7 @@ src="https://www.facebook.com/tr?id=980139047822922&ev=PageView&noscript=1"
           <input class="chat__input" id="chatInput" type="text" placeholder="Descreva a situação…" maxlength="160" />
           <button class="chat__send" type="submit" aria-label="Enviar"><svg aria-hidden="true"><use href="#i-send"/></svg></button>
         </form>
-        <p class="chat__foot">Demonstração com respostas reais do app. No Tá Safo, o assistente analisa qualquer situação.</p>
+        <p class="chat__foot">Demonstração no site: o exemplo do celular no painel reproduz uma resposta real do assistente; os outros foram montados com as fichas do app. No Tá Safo, o assistente analisa qualquer situação.</p>
       </div>
     </div>
 
@@ -537,6 +537,14 @@ src="https://www.facebook.com/tr?id=980139047822922&ev=PageView&noscript=1"
           </div>
           <div class="result result--crime" id="calcResult" aria-live="polite"></div>
         </div>
+        <div class="calc-info">
+          <h4><svg aria-hidden="true"><use href="#i-info"/></svg>Informação</h4>
+          <ul>
+            <li><i style="background:#34A56F"></i>Até 0,04 mg/L: dentro da tolerância, sem providências</li>
+            <li><i style="background:#F5A524"></i>De 0,05 a 0,33 mg/L: infração de trânsito (art. 165 do CTB)</li>
+            <li><i style="background:#E5484D"></i>A partir de 0,34 mg/L: crime de trânsito (art. 306 do CTB)</li>
+          </ul>
+        </div>
       </article>
 
       <!-- Históricos -->
@@ -551,11 +559,11 @@ src="https://www.facebook.com/tr?id=980139047822922&ev=PageView&noscript=1"
           <div class="hist-cat"><span class="tool__icon ic-blue"><svg aria-hidden="true"><use href="#i-cone"/></svg></span><div><strong>Infrações diversas</strong><small>Avanço de sinal vermelho · celular ao volante</small></div></div>
           <div class="hist-cat"><span class="tool__icon ic-purple"><svg aria-hidden="true"><use href="#i-siren"/></svg></span><div><strong>Acidentes</strong><small>Sem vítima · com vítima</small></div></div>
         </div>
-        <div class="hist-sample" aria-label="Trecho do modelo Embriaguez — teste positivo (infração)">
+        <div class="hist-sample">
           Durante operação de fiscalização de trânsito, o veículo <span class="fill">[MARCA/MODELO]</span>, placa <span class="fill">[PLACA]</span>, foi abordado. O condutor <span class="fill">[NOME COMPLETO]</span>, CPF <span class="fill">[CPF]</span>, CNH <span class="fill">[Nº CNH]</span> apresentava sinais de embriaguez como: <span class="fill">[DESCREVER SINAIS VISÍVEIS, se houver]</span>…
           <div class="hist-sample__fade"></div>
         </div>
-        <div class="hist-sample__foot"><span>Embriaguez — teste positivo (infração)</span><button class="copy-btn" type="button" data-copy-text="Durante operação de fiscalização de trânsito, o veículo [MARCA/MODELO], placa [PLACA], foi abordado. O condutor [NOME COMPLETO], CPF [CPF], CNH [Nº CNH] apresentava sinais de embriaguez como: [DESCREVER SINAIS VISÍVEIS, se houver]."><svg aria-hidden="true"><use href="#i-copy"/></svg>Copiar</button></div>
+        <div class="hist-sample__foot"><span>Embriaguez — teste positivo (infração)</span><button class="copy-btn" type="button" aria-label="Copiar trecho do modelo" data-copy-text="Durante operação de fiscalização de trânsito, o veículo [MARCA/MODELO], placa [PLACA], foi abordado. O condutor [NOME COMPLETO], CPF [CPF], CNH [Nº CNH] apresentava sinais de embriaguez como: [DESCREVER SINAIS VISÍVEIS, se houver]."><svg aria-hidden="true"><use href="#i-copy"/></svg>Copiar trecho</button></div>
       </article>
 
       <!-- Crimes -->
@@ -564,12 +572,14 @@ src="https://www.facebook.com/tr?id=980139047822922&ev=PageView&noscript=1"
         <span class="tool__kicker">Crimes de trânsito</span>
         <h3 class="h-card" id="crime-title">Arts. 302 a 312 — texto da lei, pena e flagrante.</h3>
         <p class="tool__desc">Inclui os arts. 312-A e 312-B, com busca por artigo ou palavra e favoritos.</p>
+        <div class="crime-search" aria-hidden="true"><svg><use href="#i-search"/></svg>Artigo ou palavra do crime</div>
         <div class="crime-list">
           <div class="crime"><div class="crime__top"><strong>Art. 306</strong><span class="badge badge--crime">Cabe flagrante</span></div><p>Conduzir veículo automotor com capacidade psicomotora alterada em razão da influência de álcool ou de outra substância psicoativa que determine dependência.</p><p class="crime__pena">Pena: detenção de 6 a 36 meses</p></div>
-          <div class="crime"><div class="crime__top"><strong>Art. 312</strong><span class="badge badge--crime">Flagrante</span></div><p>Inovar artificiosamente, em caso de acidente automobilístico com vítima, na pendência do respectivo procedimento…</p><p class="crime__pena">Detenção ou multa de 6 a 12 meses</p></div>
-          <div class="crime"><div class="crime__top"><strong>Art. 311</strong><span class="badge badge--crime">Flagrante</span></div><p>Trafegar em velocidade incompatível com a segurança nas proximidades de escolas, hospitais, estações de embarque e desembarque de passageiros…</p><p class="crime__pena">Detenção ou multa de 6 a 12 meses</p></div>
+          <div class="crime"><div class="crime__top"><strong>Art. 312</strong><span class="badge badge--crime">Cabe flagrante</span></div><p>Inovar artificiosamente, em caso de acidente automobilístico com vítima, na pendência do respectivo procedimento…</p><p class="crime__pena">Pena: detenção ou multa de 6 a 12 meses</p></div>
+          <div class="crime"><div class="crime__top"><strong>Art. 311-CTB</strong><span class="badge badge--crime">Cabe flagrante</span></div><p>Trafegar em velocidade incompatível com a segurança nas proximidades de escolas, hospitais, estações de embarque e desembarque de passageiros…</p><p class="crime__pena">Pena: detenção ou multa de 6 a 12 meses</p></div>
           <div class="crime"><div class="crime__top"><strong>Art. 312-A</strong><span class="badge badge--info">Informativo</span></div><p>Para os crimes relacionados nos arts. 302 a 312 deste Código, nas situações em que o juiz aplicar a substituição…</p></div>
         </div>
+        <div class="crime-flag"><svg aria-hidden="true"><use href="#i-shield"/></svg><div><strong>Prisão em flagrante</strong><span>Na ficha de cada crime, o app avisa quando o crime permite prisão em flagrante.</span></div></div>
       </article>
 
       <!-- Abordagem -->
@@ -615,6 +625,7 @@ src="https://www.facebook.com/tr?id=980139047822922&ev=PageView&noscript=1"
         <ul class="res-mini">
           <li><span class="badge badge--info">Nº 804/2020</span>Fiscalização de velocidade</li>
           <li><span class="badge badge--info">Nº 810/2020</span>Veículos acidentados</li>
+          <li><span class="badge badge--info">Nº 812/2020</span>Transportadores de contêineres</li>
         </ul>
       </article>
 
@@ -649,7 +660,7 @@ src="https://www.facebook.com/tr?id=980139047822922&ev=PageView&noscript=1"
       <span class="eyebrow eyebrow--light" data-reveal>Tour do app</span>
       <h2 class="h-section" id="tour-title" data-split style="margin-top:18px">49 segundos pelo Tá Safo.</h2>
       <p class="lead" data-reveal style="margin-top:20px">Da tela inicial à ficha da 518-51, das orientações ao texto do AIT, do Menu às placas. Toque num capítulo para pular direto.</p>
-      <div class="chapters" id="chapters" role="list"></div>
+      <ol class="chapters" id="chapters" aria-label="Capítulos do vídeo"></ol>
     </div>
     <div class="tour__media" data-reveal="scale">
       <div class="phone" data-tilt style="position:relative">
@@ -678,7 +689,7 @@ src="https://www.facebook.com/tr?id=980139047822922&ev=PageView&noscript=1"
       <button class="round-btn" type="button" id="railNext" aria-label="Próximas telas"><svg aria-hidden="true"><use href="#i-right"/></svg></button>
     </div>
   </div>
-  <div class="rail" id="rail" tabindex="0" aria-label="Galeria de telas do app"></div>
+  <div class="rail" id="rail" tabindex="0" role="region" aria-label="Galeria de telas do app (use as setas do teclado)"></div>
   <div class="rail-progress" aria-hidden="true"><i id="railProgress"></i></div>
 </section>
 
