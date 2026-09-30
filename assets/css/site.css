@@ -877,9 +877,12 @@ button.kbd:hover { background: var(--yellow-soft); }
   content: ''; position: absolute; inset: 0; pointer-events: none;
   background: radial-gradient(900px 600px at 70% 50%, rgba(245, 183, 0, .10), transparent 60%);
 }
-.tour__grid { position: relative; display: grid; grid-template-columns: 1fr auto; gap: clamp(36px, 7vw, 110px); align-items: center; }
+.tour__grid { position: relative; display: grid; grid-template-columns: 1fr auto; grid-template-areas: 'copy media' 'chapters media'; column-gap: clamp(36px, 7vw, 110px); }
+.tour__copy { grid-area: copy; align-self: end; }
+.tour__media { grid-area: media; align-self: center; }
+.chapters { grid-area: chapters; align-self: start; }
 .tour .phone { --pw: 320px; }
-.chapters { margin: 36px 0 0; padding: 0; list-style: none; display: grid; gap: 4px; }
+.chapters { position: relative; margin: 36px 0 0; padding: 0; list-style: none; display: grid; gap: 4px; }
 .chapters li { display: block; }
 .chapter {
   position: relative; width: 100%; display: grid; grid-template-columns: 56px 1fr auto; align-items: center; gap: 14px; padding: 12px 14px; border: 0; border-radius: 14px;
@@ -892,6 +895,9 @@ button.kbd:hover { background: var(--yellow-soft); }
 .chapter__bar { position: absolute; left: 0; bottom: 0; height: 2px; background: var(--yellow); width: 0; }
 .chapter svg { width: 18px; height: 18px; opacity: 0; transition: opacity .2s; }
 .chapter.is-active svg, .chapter:hover svg { opacity: 1; }
+.tour__media { display: flex; flex-direction: column; align-items: center; }
+.tour__label { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 18px; padding: 7px 14px; border-radius: 999px; background: rgba(255, 255, 255, .08); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .12); font-size: 13px; font-weight: 700; color: rgba(255, 255, 255, .8); }
+.tour__label svg { width: 12px; height: 12px; color: var(--yellow); }
 .tour__progress { position: absolute; left: 12%; right: 12%; bottom: -26px; height: 4px; border-radius: 4px; background: rgba(255, 255, 255, .12); overflow: hidden; }
 .tour__progress i { position: absolute; inset: 0; background: var(--yellow); transform-origin: left; transform: scaleX(0); }
 
@@ -1036,8 +1042,24 @@ button.kbd:hover { background: var(--yellow-soft); }
   .fstep:first-child { border-top: 0; }
   .fstep__phone { display: flex; justify-content: center; margin-top: 26px; }
   .fstep__phone .phone { --pw: min(240px, 62vw); }
-  .tour__grid { grid-template-columns: 1fr; }
-  .tour__media { justify-self: center; }
+  .tour__grid { grid-template-columns: 1fr; grid-template-areas: 'copy' 'media' 'chapters'; }
+  .tour__media { justify-self: center; margin-top: 36px; }
+  .tour .phone { --pw: min(320px, 66vw, calc((100vh - 240px) * .44)); --pw: min(320px, 66vw, calc((100svh - 240px) * .44)); }
+  .chapters {
+    display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none;
+    margin: 48px calc(var(--gutter) * -1) 0; padding: 2px var(--gutter) 6px; scroll-padding-left: var(--gutter);
+  }
+  .chapters::-webkit-scrollbar { display: none; }
+  .chapters:focus-within { scroll-snap-type: none; }
+  .chapters li { flex: 0 0 auto; scroll-snap-align: start; }
+  .chapter {
+    width: auto; grid-template-columns: auto auto; gap: 8px; padding: 10px 16px; border-radius: 999px; white-space: nowrap; font-size: 14.5px;
+    background: rgba(255, 255, 255, .06); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .14); color: rgba(255, 255, 255, .8);
+  }
+  .chapter svg { display: none; }
+  .chapter.is-active { background: var(--yellow); color: var(--navy); box-shadow: none; }
+  .chapter.is-active .chapter__t { color: var(--navy); }
+  .chapter.is-active .chapter__bar { background: rgba(11, 37, 69, .35); }
   .cta__card { grid-template-columns: 1fr; text-align: center; }
   .cta__card .lead { margin-left: auto; margin-right: auto; }
   .cta__card .store-row { justify-content: center; }
@@ -1065,7 +1087,7 @@ button.kbd:hover { background: var(--yellow-soft); }
   .street__card p { max-width: none; }
   .street__card .mascot { width: 130px; height: 130px; }
   .footer__top { grid-template-columns: 1fr 1fr; }
-  .tour .phone { --pw: min(290px, 76vw); }
+  .tour .phone { --pw: min(260px, 66vw, calc((100vh - 240px) * .44)); --pw: min(260px, 66vw, calc((100svh - 240px) * .44)); }
   .video-phone .phone { --pw: min(270px, 72vw); }
   .chat { height: 680px; height: min(680px, 88svh); min-height: 520px; border-radius: 22px; }
   .chat__chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; padding-bottom: 6px; }
