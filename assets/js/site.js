@@ -806,6 +806,8 @@
   const tourProgress = $('#tourProgress');
   const tourPhone = tourVideo.closest('.phone');
   let lastChapter = -1;
+  let stripTouchedAt = -1e9;
+  ['pointerdown', 'wheel', 'touchstart'].forEach((ev) => chaptersEl.addEventListener(ev, () => { stripTouchedAt = performance.now(); }, { passive: true }));
   const updateChapters = () => {
     const t = tourVideo.currentTime, dur = tourVideo.duration || 49.4;
     let idx = 0;
@@ -819,7 +821,9 @@
     // no celular os capítulos viram uma faixa horizontal: mantém o capítulo atual visível nela
     if (idx !== lastChapter) {
       lastChapter = idx;
-      if (chaptersEl.scrollWidth > chaptersEl.clientWidth + 4) {
+      const focusInside = chaptersEl.contains(document.activeElement) && document.activeElement.matches(':focus-visible');
+      const recentlyTouched = performance.now() - stripTouchedAt < 5000;
+      if (chaptersEl.scrollWidth > chaptersEl.clientWidth + 4 && !focusInside && !recentlyTouched) {
         const li = chBtns[idx].parentElement;
         const pad = parseFloat(getComputedStyle(chaptersEl).paddingLeft) || 0;
         chaptersEl.scrollTo({ left: Math.max(0, li.offsetLeft - pad), behavior: motionOK ? 'smooth' : 'auto' });
@@ -827,7 +831,10 @@
     }
   };
   tourVideo.addEventListener('timeupdate', updateChapters);
-  tourVideo.addEventListener('ended', () => { tourVideo.currentTime = 0; tourVideo.play().catch(() => {}); });
+  // no fim, segura o último quadro (Favoritos) por um instante antes de recomeçar
+  tourVideo.addEventListener('ended', () => {
+    setTimeout(() => { if (tourVideo.ended) { tourVideo.currentTime = 0; tourVideo.play().catch(() => {}); } }, 2500);
+  });
   chBtns.forEach((b) => b.addEventListener('click', () => {
     // garante que o vídeo esteja na tela ao escolher um capítulo
     const r = tourPhone.getBoundingClientRect();
