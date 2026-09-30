@@ -509,9 +509,10 @@
     empty.textContent = 'Nenhum crime nesta amostra. No app, a busca cobre os arts. 302 a 312.';
     crimeList.appendChild(empty);
     crimeInput.addEventListener('input', () => {
-      const q = normalize(crimeInput.value.trim());
+      const clean = (t) => normalize(t).replace(/[^\w\s-]/g, '').replace(/\s+/g, ' ');
+      const q = clean(crimeInput.value.trim());
       let n = 0;
-      crimes.forEach((c) => { const ok = !q || normalize(`${c.textContent} ${c.dataset.kw || ''}`).includes(q); c.hidden = !ok; if (ok) n++; });
+      crimes.forEach((c) => { const ok = !q || clean(`${c.textContent} ${c.dataset.kw || ''}`).includes(q); c.hidden = !ok; if (ok) n++; });
       empty.hidden = n > 0;
     });
   }
@@ -699,7 +700,7 @@
     if (v.cat || v.meta) html += `<p style="font-size:13px;color:var(--muted);font-weight:700;margin-top:2px">${[v.cat, v.meta].filter(Boolean).join(' · ')}</p>`;
     if (v.docs) html += `<h5>Documentos necessários</h5><ul class="abord__docs">${v.docs.map((d) => `<li>${d}</li>`).join('')}</ul>`;
     if (v.steps) html += `<h5>Passos para abordagem</h5><ol class="abord__steps">${v.steps.map((s, i) => `<li style="--i:${i}">${s}</li>`).join('')}</ol><p style="font-size:13px;color:var(--muted);font-weight:700;margin-top:10px">…e os demais passos no app.</p>`;
-    else html += `<h5>No app</h5><ol class="abord__steps"><li style="--i:0">Documentos necessários</li><li style="--i:1">Passos da abordagem</li><li style="--i:2">Itens a verificar</li></ol>`;
+    else html += `<h5>No app</h5><ol class="abord__steps"><li style="--i:0">Documentos necessários</li><li style="--i:1">Passos da abordagem</li><li style="--i:2">Itens a verificar</li></ol><div class="abord__shot"><div class="phone"><div class="phone__screen"><img src="${PRINTS}18-tutorial-abordagem.webp" width="720" height="1564" alt="Tela do tutorial de abordagem com a lista de tipos de veículo" loading="lazy" /></div></div></div>`;
     html += `<div class="abord__lock">${icon('i-lock')}Há também um conteúdo operacional liberado apenas para profissionais com acesso autorizado.</div>`;
     abordPanel.innerHTML = html;
   };
