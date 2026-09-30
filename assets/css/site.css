@@ -1050,6 +1050,7 @@ button.kbd:hover { background: var(--yellow-soft); }
     margin: 48px calc(var(--gutter) * -1) 0; padding: 2px var(--gutter) 6px; scroll-padding-left: var(--gutter);
   }
   .chapters::-webkit-scrollbar { display: none; }
+  .chapters:focus-within { scroll-snap-type: none; }
   .chapters li { flex: 0 0 auto; scroll-snap-align: start; }
   .chapter {
     width: auto; grid-template-columns: auto auto; gap: 8px; padding: 10px 16px; border-radius: 999px; white-space: nowrap; font-size: 14.5px;

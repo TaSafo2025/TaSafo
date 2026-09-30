@@ -780,6 +780,7 @@
     const load = () => loadVideo(v);
     const play = () => { load(); const p = v.play(); if (p && p.catch) p.catch(() => {}); };
     new IntersectionObserver(([en]) => {
+      v.dataset.inView = en.isIntersecting ? '1' : '';
       if (en.isIntersecting) { if (!userPaused && motionOK) play(); else load(); }
       else if (!v.paused) v.pause();
     }, { threshold: .35 }).observe(v);
@@ -807,6 +808,16 @@
   const tourPhone = tourVideo.closest('.phone');
   let lastChapter = -1;
   let stripTouchedAt = -1e9;
+  // navegação por teclado: mantém o capítulo com foco inteiro na faixa
+  chaptersEl.addEventListener('focusin', (e) => {
+    const li = e.target.closest('li');
+    if (!li || chaptersEl.scrollWidth <= chaptersEl.clientWidth + 4) return;
+    const pad = parseFloat(getComputedStyle(chaptersEl).paddingLeft) || 0;
+    const left = li.offsetLeft, right = left + li.offsetWidth;
+    const viewL = chaptersEl.scrollLeft + pad, viewR = chaptersEl.scrollLeft + chaptersEl.clientWidth - pad;
+    if (left < viewL) chaptersEl.scrollLeft = left - pad;
+    else if (right > viewR) chaptersEl.scrollLeft = right - chaptersEl.clientWidth + pad;
+  });
   ['pointerdown', 'wheel', 'touchstart'].forEach((ev) => chaptersEl.addEventListener(ev, () => { stripTouchedAt = performance.now(); }, { passive: true }));
   const updateChapters = () => {
     const t = tourVideo.currentTime, dur = tourVideo.duration || 49.4;
@@ -833,7 +844,11 @@
   tourVideo.addEventListener('timeupdate', updateChapters);
   // no fim, segura o último quadro (Favoritos) por um instante antes de recomeçar
   tourVideo.addEventListener('ended', () => {
-    setTimeout(() => { if (tourVideo.ended) { tourVideo.currentTime = 0; tourVideo.play().catch(() => {}); } }, 2500);
+    setTimeout(() => {
+      if (!tourVideo.ended) return;
+      tourVideo.currentTime = 0;
+      if (tourVideo.dataset.inView) tourVideo.play().catch(() => {});
+    }, 2500);
   });
   chBtns.forEach((b) => b.addEventListener('click', () => {
     // garante que o vídeo esteja na tela ao escolher um capítulo
