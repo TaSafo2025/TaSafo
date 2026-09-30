@@ -665,7 +665,7 @@ main { overflow-x: clip; }
   font-weight: 800; font-size: 13.5px; padding: 6px 8px; border-radius: 8px; transition: background .2s;
 }
 .copy-btn:hover { background: var(--info-bg); }
-.copy-btn svg { width: 16px; height: 16px; }
+.copy-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
 .acc__content .copy-btn { display: flex; }
 .ait { background: #fff; border-radius: 16px; box-shadow: inset 0 0 0 1px var(--line); padding: 16px; }
 .ait__head { display: flex; align-items: center; gap: 10px; font-weight: 800; color: var(--navy); }

@@ -509,7 +509,7 @@
     empty.textContent = 'Nenhum crime nesta amostra. No app, a busca cobre os arts. 302 a 312.';
     crimeList.appendChild(empty);
     crimeInput.addEventListener('input', () => {
-      const clean = (t) => normalize(t).replace(/[^\w\s-]/g, '').replace(/\s+/g, ' ');
+      const clean = (t) => normalize(t).replace(/-/g, ' ').replace(/[^\w\s]/g, '').replace(/\s+/g, ' ');
       const q = clean(crimeInput.value.trim());
       let n = 0;
       crimes.forEach((c) => { const ok = !q || clean(`${c.textContent} ${c.dataset.kw || ''}`).includes(q); c.hidden = !ok; if (ok) n++; });
