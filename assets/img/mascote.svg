@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Mascote do Tá Safo: carrinho amarelo com giroflex">
+  <circle cx="100" cy="100" r="100" fill="#F5B700"/>
+  <g transform="translate(100 104) scale(.92) translate(-100 -104)">
+  <ellipse cx="100" cy="167" rx="48" ry="6" fill="#D4A109"/>
+  <g stroke="#0B1B2E" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="46" y="134" width="26" height="26" rx="6" fill="#16213A"/>
+    <rect x="128" y="134" width="26" height="26" rx="6" fill="#16213A"/>
+    <rect x="72" y="44" width="56" height="13" rx="4" fill="#275193"/>
+    <path d="M100 44h24a4 4 0 0 1 4 4v5a4 4 0 0 1-4 4h-24z" fill="#8E3446" stroke="none"/>
+    <rect x="72" y="44" width="56" height="13" rx="4" fill="none"/>
+    <path d="M82 57h36c3 0 5 2 6 4.5l8 30H68l8-30c1-2.5 3-4.5 6-4.5z" fill="#F7B500"/>
+    <path d="M85 62h30c2 0 3.2 1.2 3.8 3l5 22H76.2l5-22c.6-1.8 1.8-3 3.8-3z" fill="#1E3A5F"/>
+    <ellipse cx="38" cy="98" rx="9" ry="7" fill="#F7B500"/>
+    <ellipse cx="162" cy="98" rx="9" ry="7" fill="#F7B500"/>
+    <rect x="40" y="90" width="120" height="52" rx="16" fill="#F7B500"/>
+    <ellipse cx="55" cy="109" rx="8.5" ry="6.5" fill="#FFF3C4"/>
+    <ellipse cx="145" cy="109" rx="8.5" ry="6.5" fill="#FFF3C4"/>
+    <path d="M82 117q18 13 36 0" fill="none"/>
+    <rect x="85" y="130" width="30" height="12" rx="2.5" fill="#FFFFFF"/>
+  </g>
+  <rect x="87" y="132" width="26" height="3.2" fill="#1F5FBF"/>
+  <g>
+    <circle cx="88.5" cy="76" r="9" fill="#FFFFFF" stroke="#0B1B2E" stroke-width="2.2"/>
+    <circle cx="111.5" cy="76" r="9" fill="#FFFFFF" stroke="#0B1B2E" stroke-width="2.2"/>
+    <g class="pupils"><circle cx="89" cy="76.5" r="4.4" fill="#0B1B2E"/><circle cx="112" cy="76.5" r="4.4" fill="#0B1B2E"/></g>
+  </g>
+  </g>
+</svg>
