@@ -412,7 +412,12 @@
   const chatInput = $('#chatInput');
   const chatChips = $$('.chat__chips .chip');
   let busy = false;
-  const scrollChat = () => { chatBody.scrollTop = chatBody.scrollHeight; };
+  let followMsg = null;
+  const scrollChat = () => {
+    let target = chatBody.scrollHeight;
+    if (followMsg) target = Math.min(target, followMsg.offsetTop - 10);
+    chatBody.scrollTop = target;
+  };
   const addMsg = (who, html) => {
     const m = document.createElement('div');
     m.className = `msg msg--${who}`;
@@ -466,7 +471,9 @@
     await new Promise((r) => setTimeout(r, motionOK ? 1100 : 0));
     typing.remove();
     const m = addMsg('bot', ANSWERS[key].a);
+    followMsg = m; scrollChat();
     await stream($('.msg__bubble', m));
+    scrollChat(); followMsg = null;
     busy = false;
     chatChips.forEach((c) => { c.disabled = false; });
   };
@@ -491,6 +498,23 @@
     chatChips.forEach((x) => x.classList.remove('is-active'));
     ask(route(v), v);
   });
+
+  /* ---------- Busca de crimes ---------- */
+  const crimeInput = $('#crimeInput');
+  const crimeList = $('#crimeList');
+  if (crimeInput && crimeList) {
+    const crimes = $$('.crime', crimeList);
+    const empty = document.createElement('p');
+    empty.className = 'crime-empty'; empty.hidden = true;
+    empty.textContent = 'Nenhum crime nesta amostra. No app, a busca cobre os arts. 302 a 312.';
+    crimeList.appendChild(empty);
+    crimeInput.addEventListener('input', () => {
+      const q = normalize(crimeInput.value.trim());
+      let n = 0;
+      crimes.forEach((c) => { const ok = !q || normalize(`${c.textContent} ${c.dataset.kw || ''}`).includes(q); c.hidden = !ok; if (ok) n++; });
+      empty.hidden = n > 0;
+    });
+  }
 
   /* ---------- Pipeline ("como funciona") ---------- */
   const stepsEl = $('#steps');
@@ -771,7 +795,7 @@
   const tourVideo = $('#tourVideo');
   const CHAPTERS = [
     [0, 'Início'], [2, 'Ficha da 518-51'], [8, 'Quando autuar'], [13, 'Orientação aberta'], [19, 'Quando não autuar'],
-    [21, 'Outras situações e texto do AIT'], [28, 'Menu'], [30, 'Placas de regulamentação'], [41, 'Detalhe da placa R-9'], [48, 'Favoritos']
+    [21, 'Outras situações e texto do AIT'], [28.5, 'Menu'], [30, 'Placas de regulamentação'], [41, 'Detalhe da placa R-9'], [48, 'Favoritos']
   ];
   const chaptersEl = $('#chapters');
   const mmss = (s) => `0:${String(Math.floor(s)).padStart(2, '0')}`;

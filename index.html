@@ -319,7 +319,7 @@ src="https://www.facebook.com/tr?id=980139047822922&ev=PageView&noscript=1"
           <input class="chat__input" id="chatInput" type="text" placeholder="Descreva a situação…" maxlength="160" />
           <button class="chat__send" type="submit" aria-label="Enviar"><svg aria-hidden="true"><use href="#i-send"/></svg></button>
         </form>
-        <p class="chat__foot">Demonstração no site: o exemplo do celular no painel reproduz uma resposta real do assistente; os outros foram montados com as fichas do app. No Tá Safo, o assistente analisa qualquer situação.</p>
+        <p class="chat__foot">Demo: o exemplo do celular no painel é uma resposta real do app; os demais foram montados com as fichas.</p>
       </div>
     </div>
 
@@ -572,12 +572,12 @@ src="https://www.facebook.com/tr?id=980139047822922&ev=PageView&noscript=1"
         <span class="tool__kicker">Crimes de trânsito</span>
         <h3 class="h-card" id="crime-title">Arts. 302 a 312 — texto da lei, pena e flagrante.</h3>
         <p class="tool__desc">Inclui os arts. 312-A e 312-B, com busca por artigo ou palavra e favoritos.</p>
-        <div class="crime-search" aria-hidden="true"><svg><use href="#i-search"/></svg>Artigo ou palavra do crime</div>
-        <div class="crime-list">
-          <div class="crime"><div class="crime__top"><strong>Art. 306</strong><span class="badge badge--crime">Cabe flagrante</span></div><p>Conduzir veículo automotor com capacidade psicomotora alterada em razão da influência de álcool ou de outra substância psicoativa que determine dependência.</p><p class="crime__pena">Pena: detenção de 6 a 36 meses</p></div>
-          <div class="crime"><div class="crime__top"><strong>Art. 312</strong><span class="badge badge--crime">Cabe flagrante</span></div><p>Inovar artificiosamente, em caso de acidente automobilístico com vítima, na pendência do respectivo procedimento…</p><p class="crime__pena">Pena: detenção ou multa de 6 a 12 meses</p></div>
-          <div class="crime"><div class="crime__top"><strong>Art. 311-CTB</strong><span class="badge badge--crime">Cabe flagrante</span></div><p>Trafegar em velocidade incompatível com a segurança nas proximidades de escolas, hospitais, estações de embarque e desembarque de passageiros…</p><p class="crime__pena">Pena: detenção ou multa de 6 a 12 meses</p></div>
-          <div class="crime"><div class="crime__top"><strong>Art. 312-A</strong><span class="badge badge--info">Informativo</span></div><p>Para os crimes relacionados nos arts. 302 a 312 deste Código, nas situações em que o juiz aplicar a substituição…</p></div>
+        <div class="crime-search"><svg aria-hidden="true"><use href="#i-search"/></svg><label class="sr-only" for="crimeInput">Buscar crime por artigo ou palavra</label><input id="crimeInput" type="search" placeholder="Artigo ou palavra do crime" autocomplete="off" /></div>
+        <div class="crime-list" id="crimeList">
+          <div class="crime" data-kw="embriaguez alcoolemia bafometro etilometro"><div class="crime__top"><strong>Art. 306</strong><span class="badge badge--crime">Cabe flagrante</span></div><p>Conduzir veículo automotor com capacidade psicomotora alterada em razão da influência de álcool ou de outra substância psicoativa que determine dependência.</p><p class="crime__pena">Pena: detenção de 6 a 36 meses</p></div>
+          <div class="crime" data-kw="fraude acidente"><div class="crime__top"><strong>Art. 312</strong><span class="badge badge--crime">Cabe flagrante</span></div><p>Inovar artificiosamente, em caso de acidente automobilístico com vítima, na pendência do respectivo procedimento…</p><p class="crime__pena">Pena: detenção ou multa de 6 a 12 meses</p></div>
+          <div class="crime" data-kw="velocidade escola hospital"><div class="crime__top"><strong>Art. 311-CTB</strong><span class="badge badge--crime">Cabe flagrante</span></div><p>Trafegar em velocidade incompatível com a segurança nas proximidades de escolas, hospitais, estações de embarque e desembarque de passageiros…</p><p class="crime__pena">Pena: detenção ou multa de 6 a 12 meses</p></div>
+          <div class="crime" data-kw="penas substituicao"><div class="crime__top"><strong>Art. 312-A</strong><span class="badge badge--info">Informativo</span></div><p>Para os crimes relacionados nos arts. 302 a 312 deste Código, nas situações em que o juiz aplicar a substituição…</p></div>
         </div>
         <div class="crime-flag"><svg aria-hidden="true"><use href="#i-shield"/></svg><div><strong>Prisão em flagrante</strong><span>Na ficha de cada crime, o app avisa quando o crime permite prisão em flagrante.</span></div></div>
       </article>
