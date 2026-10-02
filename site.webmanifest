@@ -1,0 +1,19 @@
+{
+  "name": "Tá Safo — App para agentes de trânsito",
+  "short_name": "Tá Safo",
+  "description": "Consulta do CTB, quando autuar e quando não autuar e assistente com IA para agentes de trânsito.",
+  "lang": "pt-BR",
+  "start_url": "./",
+  "scope": "./",
+  "display": "browser",
+  "background_color": "#F3F5F8",
+  "theme_color": "#0B2545",
+  "icons": [
+    { "src": "assets/img/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/img/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "related_applications": [
+    { "platform": "itunes", "url": "https://apps.apple.com/br/app/ta-safo/id6757497748" },
+    { "platform": "play", "url": "https://play.google.com/store/apps/details?id=com.tasafo.app", "id": "com.tasafo.app" }
+  ]
+}

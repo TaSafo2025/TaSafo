@@ -3,8 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>Tá Safo — O parceiro de bolso do agente de trânsito</title>
-<meta name="description" content="Consulta rápida do CTB, orientações de quando autuar e quando não autuar e um assistente com inteligência artificial que enquadra a situação que você descreve. Para iPhone e Android." />
+<title>Tá Safo — App para Agentes de Trânsito | Infrações do CTB com IA</title>
+<meta name="description" content="Tá Safo, o app do agente de trânsito: 414 infrações do CTB, quando autuar e quando não autuar, crimes, etilômetro e assistente com IA. iPhone e Android." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+<meta name="application-name" content="Tá Safo" />
+<meta name="apple-itunes-app" content="app-id=6757497748" />
 <meta name="theme-color" content="#0B2545" />
 <meta name="color-scheme" content="light" />
 <link rel="canonical" href="https://tasafo2025.github.io/TaSafo/" />
@@ -12,19 +15,23 @@
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="pt_BR" />
 <meta property="og:site_name" content="Tá Safo" />
-<meta property="og:title" content="Tá Safo — Descreva a abordagem. Receba o enquadramento." />
-<meta property="og:description" content="Todo o CTB no bolso, com orientação de quem fiscaliza: 414 infrações, 3.295 orientações de fiscalização e um assistente com IA." />
+<meta property="og:title" content="Tá Safo — App para agentes de trânsito" />
+<meta property="og:description" content="Descreva a abordagem. Receba o enquadramento. Todo o CTB no bolso: 414 infrações, 3.295 orientações de fiscalização e um assistente com IA." />
 <meta property="og:url" content="https://tasafo2025.github.io/TaSafo/" />
 <meta property="og:image" content="https://tasafo2025.github.io/TaSafo/assets/img/og-image.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="Tá Safo: o app do agente de trânsito, com a ficha da infração e o assistente com IA na tela do celular." />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Tá Safo — Descreva a abordagem. Receba o enquadramento." />
+<meta name="twitter:title" content="Tá Safo — App para agentes de trânsito" />
 <meta name="twitter:description" content="Todo o CTB no bolso, com orientação de quem fiscaliza." />
 <meta name="twitter:image" content="https://tasafo2025.github.io/TaSafo/assets/img/og-image.jpg" />
 
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="48x48" href="assets/img/icon-48.png" />
+<link rel="icon" type="image/png" sizes="96x96" href="assets/img/icon-96.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="assets/img/icon-192.png" />
+<link rel="manifest" href="site.webmanifest" />
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
 
 <!-- Meta Pixel Code -->
@@ -53,17 +60,48 @@ src="https://www.facebook.com/tr?id=980139047822922&ev=PageView&noscript=1"
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "MobileApplication",
-  "name": "Tá Safo",
-  "description": "O parceiro de bolso do agente de trânsito: consulta rápida do CTB, orientações de quando autuar e quando não autuar, e um assistente com inteligência artificial que enquadra a situação descrita.",
-  "applicationCategory": "ReferenceApplication",
-  "operatingSystem": "iOS, Android",
-  "inLanguage": "pt-BR",
-  "url": "https://tasafo2025.github.io/TaSafo/",
-  "image": "https://tasafo2025.github.io/TaSafo/assets/img/logo-128.png",
-  "installUrl": [
-    "https://apps.apple.com/br/app/ta-safo/id6757497748",
-    "https://play.google.com/store/apps/details?id=com.tasafo.app"
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://tasafo2025.github.io/TaSafo/#website",
+      "url": "https://tasafo2025.github.io/TaSafo/",
+      "name": "Tá Safo",
+      "alternateName": ["Ta Safo", "TaSafo", "App Tá Safo"],
+      "description": "Site oficial do Tá Safo, o app para agentes de trânsito.",
+      "inLanguage": "pt-BR",
+      "publisher": { "@id": "https://tasafo2025.github.io/TaSafo/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://tasafo2025.github.io/TaSafo/#organization",
+      "name": "Tá Safo",
+      "alternateName": "Ta Safo",
+      "url": "https://tasafo2025.github.io/TaSafo/",
+      "logo": { "@type": "ImageObject", "url": "https://tasafo2025.github.io/TaSafo/assets/img/icon-512.png", "width": 512, "height": 512 },
+      "email": "suporte.safo@gmail.com",
+      "sameAs": [
+        "https://instagram.com/apptasafo",
+        "https://apps.apple.com/br/app/ta-safo/id6757497748",
+        "https://play.google.com/store/apps/details?id=com.tasafo.app"
+      ]
+    },
+    {
+      "@type": "MobileApplication",
+      "@id": "https://tasafo2025.github.io/TaSafo/#app",
+      "name": "Tá Safo",
+      "alternateName": "Ta Safo",
+      "description": "O parceiro de bolso do agente de trânsito: consulta rápida do CTB, orientações de quando autuar e quando não autuar, crimes de trânsito, calculadora do etilômetro, modelos de histórico e um assistente com inteligência artificial que enquadra a situação descrita.",
+      "applicationCategory": "ReferenceApplication",
+      "operatingSystem": "iOS, Android",
+      "inLanguage": "pt-BR",
+      "url": "https://tasafo2025.github.io/TaSafo/",
+      "image": "https://tasafo2025.github.io/TaSafo/assets/img/og-image.jpg",
+      "publisher": { "@id": "https://tasafo2025.github.io/TaSafo/#organization" },
+      "installUrl": [
+        "https://apps.apple.com/br/app/ta-safo/id6757497748",
+        "https://play.google.com/store/apps/details?id=com.tasafo.app"
+      ]
+    }
   ]
 }
 </script>
@@ -165,16 +203,16 @@ src="https://www.facebook.com/tr?id=980139047822922&ev=PageView&noscript=1"
 <main id="conteudo">
 
 <!-- HERO -->
-<section class="hero" id="topo" aria-labelledby="hero-title">
+<section class="hero" id="topo" aria-labelledby="hero-h1">
   <div class="hero__grid-bg" aria-hidden="true"></div>
   <div class="hero__spot" aria-hidden="true"></div>
   <div class="container hero__inner">
     <div class="hero__copy">
-      <div class="hero__badge" data-reveal>
+      <h1 class="hero__badge" id="hero-h1" data-reveal>
         <span class="mascot" data-mascot></span>
-        Para agentes de trânsito <b>· iPhone e Android</b>
-      </div>
-      <h1 class="h-display" id="hero-title" data-split>Descreva a abordagem. <span class="mark">Receba o enquadramento.</span></h1>
+        Tá Safo: app para agentes de trânsito <b>· iPhone e Android</b>
+      </h1>
+      <p class="h-display" id="hero-title" data-split>Descreva a abordagem. <span class="mark">Receba o enquadramento.</span></p>
       <p class="lead" data-reveal style="--d:.35s">O parceiro de bolso do agente de trânsito: todo o CTB com orientação de quem fiscaliza — quando autuar, quando não autuar e o que escrever no AIT. E um assistente com inteligência artificial que enquadra a situação que você descreve.</p>
       <div class="store-row" data-reveal style="--d:.5s">
         <a class="store" href="https://apps.apple.com/br/app/ta-safo/id6757497748" target="_blank" rel="noopener" data-magnetic>
