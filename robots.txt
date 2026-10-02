@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tasafo2025.github.io/TaSafo/sitemap.xml
+Sitemap: https://tasafo.net/sitemap.xml
