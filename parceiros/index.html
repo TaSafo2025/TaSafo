@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Tá Safo — Acesso de parceiro</title>
+<style>
+  :root { --marinho:#0B2545; --amarelo:#F5B700; --fundo:#F3F5F8; --borda:#E2E8F0; --texto:#0F1B2D; --suave:#4A5568; --vermelho:#B42318; --verde:#067647; }
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px 16px; background:var(--fundo); color:var(--texto); font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+  main { width:100%; max-width:420px; background:#fff; border:1px solid var(--borda); border-radius:18px; padding:28px 24px; }
+  .marca { font-weight:800; font-size:20px; color:var(--marinho); margin-bottom:20px; }
+  h1 { font-size:24px; line-height:1.2; margin:0 0 10px; color:var(--marinho); }
+  p { margin:0 0 14px; color:var(--suave); }
+  ul { margin:0 0 18px; padding-left:20px; color:var(--suave); } li { margin-bottom:4px; }
+  label { display:block; margin:0 0 12px; font-weight:600; font-size:14px; }
+  input { display:block; width:100%; margin-top:6px; padding:13px 14px; font:inherit; color:inherit; background:#fff; border:1px solid var(--borda); border-radius:12px; }
+  input:focus { outline:2px solid var(--marinho); outline-offset:1px; }
+  button { width:100%; min-height:50px; margin-top:4px; padding:13px; border:0; border-radius:12px; background:var(--amarelo); color:var(--marinho); font:inherit; font-weight:700; cursor:pointer; }
+  button:disabled { opacity:.6; cursor:default; }
+  .erro { color:var(--vermelho); font-size:14px; margin-top:12px; margin-bottom:0; }
+  .ok { color:var(--verde); font-weight:700; }
+  .aviso { background:#FFF8E1; border:1px solid #F5DFA0; border-radius:12px; padding:12px 14px; color:var(--texto); font-size:14px; }
+  .pequeno { font-size:14px; margin:16px 0 0; }
+  a { color:var(--marinho); font-weight:600; }
+  [hidden] { display:none !important; }
+</style>
+</head>
+<body>
+<main>
+  <div class="marca">Tá Safo</div>
+
+  <section id="carregando"><p>Verificando o link…</p></section>
+
+  <section id="invalido" hidden>
+    <h1 id="invalido-titulo">Link indisponível</h1>
+    <p id="invalido-texto">Este link não é válido.</p>
+  </section>
+
+  <section id="resgate" hidden>
+    <h1 id="titulo"></h1>
+    <p id="subtitulo"></p>
+    <ul>
+      <li>Todo o app, exceto o assistente com IA</li>
+      <li>Sem cartão e sem cobrança automática ao final</li>
+      <li>Um resgate por conta</li>
+    </ul>
+    <p id="prazo"></p>
+    <form id="formulario">
+      <label>E-mail da sua conta no app
+        <input id="email" type="email" autocomplete="username" required>
+      </label>
+      <label>Senha do app
+        <input id="senha" type="password" autocomplete="current-password" required>
+      </label>
+      <button id="botao" type="submit">Resgatar acesso</button>
+      <p id="erro" class="erro" role="alert" hidden></p>
+    </form>
+    <p class="pequeno">Ainda não tem conta? Baixe o app, crie sua conta e volte a este link:
+      <a href="https://apps.apple.com/br/app/ta-safo/id6757497748">iPhone</a> ·
+      <a href="https://play.google.com/store/apps/details?id=com.tasafo.app">Android</a>.
+      Para recuperar a senha, use a opção do próprio app.</p>
+  </section>
+
+  <section id="pronto" hidden>
+    <h1>Acesso liberado</h1>
+    <p class="ok" id="pronto-data"></p>
+    <p>Feche o Tá Safo por completo e abra de novo. Se ainda aparecer a tela de planos, aguarde alguns minutos e abra novamente.</p>
+    <p class="aviso" id="pronto-loja" hidden>Sua conta tem uma assinatura ativa na loja, e este benefício não a cancela. Para não ser cobrado, cancele nos Ajustes do iPhone ou no Google Play.</p>
+  </section>
+</main>
+<script>
+  const SUPABASE_URL = 'https://rbbiifdalzrqjkzjspdt.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJiYmlpZmRhbHpycWprempzcGR0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU2OTIxNjMsImV4cCI6MjA2MTI2ODE2M30.tB00KwkcSYy8eU9KLorVP8vHaXGvA64En5nJKt6-NAc';
+  const FUNCAO = SUPABASE_URL + '/functions/v1/resgatar-parceria';
+  const codigo = decodeURIComponent(location.hash.slice(1)).trim();
+  const el = (id) => document.getElementById(id);
+
+  const MENSAGENS = {
+    link_invalido: ['Link indisponível', 'Este link não é válido.'],
+    nao_iniciado: ['Ainda não começou', 'Este link ainda não está liberado.'],
+    prazo_encerrado: ['Prazo encerrado', 'O prazo para resgatar este benefício terminou.'],
+    limite_atingido: ['Vagas esgotadas', 'O limite de resgates deste benefício foi atingido.'],
+  };
+
+  function mostrar(id) {
+    for (const s of document.querySelectorAll('main section')) s.hidden = s.id !== id;
+  }
+  function invalido(tipo) {
+    const m = MENSAGENS[tipo] || ['Serviço indisponível', 'Não foi possível consultar agora. Tente de novo mais tarde.'];
+    el('invalido-titulo').textContent = m[0];
+    el('invalido-texto').textContent = m[1];
+    mostrar('invalido');
+  }
+  const data = (iso) => new Date(iso).toLocaleDateString('pt-BR', { timeZone: 'America/Sao_Paulo' });
+
+  async function chamar(corpo, token) {
+    const r = await fetch(FUNCAO, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        apikey: SUPABASE_ANON_KEY,
+        Authorization: 'Bearer ' + (token || SUPABASE_ANON_KEY),
+      },
+      body: JSON.stringify(corpo),
+    });
+    return r.json();
+  }
+
+  async function iniciar() {
+    if (!codigo) return invalido('link_invalido');
+    try {
+      const d = await chamar({ acao: 'info', codigo });
+      if (d.erro) return invalido(d.erro);
+      el('titulo').textContent = d.meses + ' meses do plano Básico, sem custo';
+      el('subtitulo').textContent = 'Benefício para ' + d.parceiro + '.';
+      el('prazo').textContent = 'Resgate até ' + data(d.resgate_fim) + '.';
+      mostrar('resgate');
+    } catch {
+      invalido('indisponivel');
+    }
+  }
+
+  function erro(texto) {
+    el('erro').textContent = texto;
+    el('erro').hidden = false;
+  }
+
+  el('formulario').addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    el('erro').hidden = true;
+    el('botao').disabled = true;
+    el('botao').textContent = 'Resgatando…';
+    try {
+      const r = await fetch(SUPABASE_URL + '/auth/v1/token?grant_type=password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', apikey: SUPABASE_ANON_KEY },
+        body: JSON.stringify({ email: el('email').value.trim(), password: el('senha').value }),
+      });
+      const login = await r.json();
+      if (!r.ok) {
+        const c = login.error_code || login.code || '';
+        return erro(c === 'email_not_confirmed'
+          ? 'Confirme seu e-mail pelo link enviado ao criar a conta.'
+          : 'E-mail ou senha incorretos.');
+      }
+      const d = await chamar({ acao: 'resgatar', codigo }, login.access_token);
+      el('senha').value = '';
+      if (d.ok || d.erro === 'ja_resgatado') {
+        el('pronto-data').textContent = 'Válido até ' + data(d.acesso_ate) + '.';
+        el('pronto-loja').hidden = !d.assinatura_na_loja;
+        return mostrar('pronto');
+      }
+      if (MENSAGENS[d.erro]) return invalido(d.erro);
+      erro('Não foi possível liberar agora. Tente de novo em alguns minutos.');
+    } catch {
+      erro('Sem conexão com o servidor. Tente de novo.');
+    } finally {
+      el('botao').disabled = false;
+      el('botao').textContent = 'Resgatar acesso';
+    }
+  });
+
+  iniciar();
+</script>
+</body>
+</html>
