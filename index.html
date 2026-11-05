@@ -1,171 +1,896 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-<meta name="googlebot" content="noindex, nofollow">
-<meta name="referrer" content="no-referrer">
-<title>T√° Safo ‚Äî Acesso de parceiro</title>
-<style>
-  :root { --marinho:#0B2545; --amarelo:#F5B700; --fundo:#F3F5F8; --borda:#E2E8F0; --texto:#0F1B2D; --suave:#4A5568; --vermelho:#B42318; --verde:#067647; }
-  * { box-sizing:border-box; }
-  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px 16px; background:var(--fundo); color:var(--texto); font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
-  main { width:100%; max-width:420px; background:#fff; border:1px solid var(--borda); border-radius:18px; padding:28px 24px; }
-  .marca { font-weight:800; font-size:20px; color:var(--marinho); margin-bottom:20px; }
-  h1 { font-size:24px; line-height:1.2; margin:0 0 10px; color:var(--marinho); }
-  p { margin:0 0 14px; color:var(--suave); }
-  ul { margin:0 0 18px; padding-left:20px; color:var(--suave); } li { margin-bottom:4px; }
-  label { display:block; margin:0 0 12px; font-weight:600; font-size:14px; }
-  input { display:block; width:100%; margin-top:6px; padding:13px 14px; font:inherit; color:inherit; background:#fff; border:1px solid var(--borda); border-radius:12px; }
-  input:focus { outline:2px solid var(--marinho); outline-offset:1px; }
-  button { width:100%; min-height:50px; margin-top:4px; padding:13px; border:0; border-radius:12px; background:var(--amarelo); color:var(--marinho); font:inherit; font-weight:700; cursor:pointer; }
-  button:disabled { opacity:.6; cursor:default; }
-  .erro { color:var(--vermelho); font-size:14px; margin-top:12px; margin-bottom:0; }
-  .ok { color:var(--verde); font-weight:700; }
-  .aviso { background:#FFF8E1; border:1px solid #F5DFA0; border-radius:12px; padding:12px 14px; color:var(--texto); font-size:14px; }
-  .pequeno { font-size:14px; margin:16px 0 0; }
-  a { color:var(--marinho); font-weight:600; }
-  [hidden] { display:none !important; }
-</style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Tá Safo — App para Agentes de Trânsito | Infrações do CTB com IA</title>
+<meta name="description" content="Tá Safo, o app do agente de trânsito: 414 infrações do CTB, quando autuar e quando não autuar, crimes, etilômetro e assistente com IA. iPhone e Android." />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+<meta name="application-name" content="Tá Safo" />
+<meta name="apple-itunes-app" content="app-id=6757497748" />
+<meta name="theme-color" content="#0B2545" />
+<meta name="color-scheme" content="light" />
+<link rel="canonical" href="https://tasafo.net/" />
+
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:site_name" content="Tá Safo" />
+<meta property="og:title" content="Tá Safo — App para agentes de trânsito" />
+<meta property="og:description" content="Descreva a abordagem. Receba o enquadramento. Todo o CTB no bolso: 414 infrações, 3.295 orientações de fiscalização e um assistente com IA." />
+<meta property="og:url" content="https://tasafo.net/" />
+<meta property="og:image" content="https://tasafo.net/assets/img/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Tá Safo: o app do agente de trânsito, com a ficha da infração e o assistente com IA na tela do celular." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Tá Safo — App para agentes de trânsito" />
+<meta name="twitter:description" content="Todo o CTB no bolso, com orientação de quem fiscaliza." />
+<meta name="twitter:image" content="https://tasafo.net/assets/img/og-image.jpg" />
+
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="48x48" href="assets/img/icon-48.png" />
+<link rel="icon" type="image/png" sizes="96x96" href="assets/img/icon-96.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="assets/img/icon-192.png" />
+<link rel="manifest" href="site.webmanifest" />
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '980139047822922');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=980139047822922&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/plus-jakarta-sans-latin.woff2" crossorigin />
+<link rel="preload" as="image" href="divulgacao-site/prints-web/03-inicio.webp" type="image/webp" />
+<link rel="stylesheet" href="assets/css/site.css" />
+<script>document.documentElement.classList.add('js');</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://tasafo.net/#website",
+      "url": "https://tasafo.net/",
+      "name": "Tá Safo",
+      "alternateName": ["Ta Safo", "TaSafo", "App Tá Safo"],
+      "description": "Site oficial do Tá Safo, o app para agentes de trânsito.",
+      "inLanguage": "pt-BR",
+      "publisher": { "@id": "https://tasafo.net/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://tasafo.net/#organization",
+      "name": "Tá Safo",
+      "alternateName": "Ta Safo",
+      "url": "https://tasafo.net/",
+      "logo": { "@type": "ImageObject", "url": "https://tasafo.net/assets/img/icon-512.png", "width": 512, "height": 512 },
+      "email": "suporte.safo@gmail.com",
+      "sameAs": [
+        "https://instagram.com/apptasafo",
+        "https://apps.apple.com/br/app/ta-safo/id6757497748",
+        "https://play.google.com/store/apps/details?id=com.tasafo.app"
+      ]
+    },
+    {
+      "@type": "MobileApplication",
+      "@id": "https://tasafo.net/#app",
+      "name": "Tá Safo",
+      "alternateName": "Ta Safo",
+      "description": "O parceiro de bolso do agente de trânsito: consulta rápida do CTB, orientações de quando autuar e quando não autuar, crimes de trânsito, calculadora do etilômetro, modelos de histórico e um assistente com inteligência artificial que enquadra a situação descrita.",
+      "applicationCategory": "ReferenceApplication",
+      "operatingSystem": "iOS, Android",
+      "inLanguage": "pt-BR",
+      "url": "https://tasafo.net/",
+      "image": "https://tasafo.net/assets/img/og-image.jpg",
+      "publisher": { "@id": "https://tasafo.net/#organization" },
+      "installUrl": [
+        "https://apps.apple.com/br/app/ta-safo/id6757497748",
+        "https://play.google.com/store/apps/details?id=com.tasafo.app"
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
-<main>
-  <div class="marca">T√° Safo</div>
 
-  <section id="carregando"><p>Verificando o link‚Ä¶</p></section>
+<!-- Ícones (sprite) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24" fill="currentColor"><path d="M3.4 20.4 20.85 12.9a1 1 0 0 0 0-1.8L3.4 3.6a.99.99 0 0 0-1.39.91L2 9.12c0 .5.37.93.87.99L17 12 2.87 13.88c-.5.07-.87.5-.87 1l.01 4.61c0 .71.73 1.2 1.39.91z"/></symbol>
+    <symbol id="i-gavel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m14 13-7.5 7.5a2.12 2.12 0 0 1-3-3L11 10"/><path d="m16 16 6-6"/><path d="m8 8 6-6"/><path d="m9 7 8 8"/><path d="m21 11-8-8"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></symbol>
+    <symbol id="i-wind" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.8 19.6A2 2 0 1 0 14 16H2"/><path d="M17.5 8a2.5 2.5 0 1 1 2 4H2"/><path d="M9.8 4.4A2 2 0 1 1 11 8H2"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 21h8"/><path d="M3 6h9"/><path d="M3 11h6"/><path d="M20.4 10.6a2.1 2.1 0 1 0-3-3l-6.9 6.9a2 2 0 0 0-.5.9l-.8 2.9 2.9-.8a2 2 0 0 0 .9-.5z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></symbol>
+    <symbol id="i-moto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></symbol>
+    <symbol id="i-bus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6v6"/><path d="M15 6v6"/><path d="M2 12h19.6"/><path d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3"/><circle cx="7" cy="18" r="2"/><path d="M9 18h5"/><circle cx="16" cy="18" r="2"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+    <symbol id="i-snow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20"/><path d="M12 2v20"/><path d="m20 16-4-4 4-4"/><path d="m4 8 4 4-4 4"/><path d="m16 4-4 4-4-4"/><path d="m8 20 4-4 4 4"/></symbol>
+    <symbol id="i-tractor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m10 11 11 .9a1 1 0 0 1 .8 1.1l-.66 4.16a1 1 0 0 1-.99.84H20"/><path d="M16 18h-5"/><path d="M18 5a1 1 0 0 0-1 1v5.57"/><path d="M3 4h8.13a1 1 0 0 1 .99.86L13 11.25"/><path d="M4 11V4"/><path d="M8 10.1V4"/><circle cx="18" cy="18" r="2"/><circle cx="7" cy="15" r="5"/></symbol>
+    <symbol id="i-octagon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.59 16.73A2 2 0 0 1 2 15.31V8.69a2 2 0 0 1 .59-1.42l4.68-4.68A2 2 0 0 1 8.69 2h6.62a2 2 0 0 1 1.42.59l4.68 4.68A2 2 0 0 1 22 8.69v6.62a2 2 0 0 1-.59 1.42l-4.68 4.68a2 2 0 0 1-1.42.59H8.69a2 2 0 0 1-1.42-.59z"/><path d="m15 9-6 6"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></symbol>
+    <symbol id="i-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-siren" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18v-6a5 5 0 1 1 10 0v6"/><path d="M5 21a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2z"/><path d="M21 12h1"/><path d="M18.5 4.5 18 5"/><path d="M2 12h1"/><path d="M12 2v1"/><path d="m4.93 4.93.7.7"/><path d="M12 12v6"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.83l8.57 3.91a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .71-1.53l7-6a2 2 0 0 1 2.58 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="14" y="4" width="4.5" height="16" rx="1.2"/><rect x="5.5" y="4" width="4.5" height="16" rx="1.2"/></symbol>
+    <symbol id="i-type" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></symbol>
+    <symbol id="i-layout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></symbol>
+    <symbol id="i-hash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16"/><path d="M4 15h16"/><path d="M10 3 8 21"/><path d="M16 3l-2 18"/></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0L14.06 8.5a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></symbol>
+    <symbol id="i-glass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22h8"/><path d="M7 10h10"/><path d="M12 15v7"/><path d="M12 15a5 5 0 0 0 5-5c0-2-.5-4-2-8H9c-1.5 4-2 6-2 8a5 5 0 0 0 5 5Z"/></symbol>
+    <symbol id="i-id" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 10h2"/><path d="M16 14h2"/><path d="M6.17 15a3 3 0 0 1 5.66 0"/><circle cx="9" cy="11" r="2"/><rect x="2" y="5" width="20" height="14" rx="2"/></symbol>
+    <symbol id="i-cone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16.05 10.97a5 2.5 0 0 1-8.1 0"/><path d="m16.92 14.05 4.48 2.04a1 1 0 0 1 0 1.83l-8.57 3.9a2 2 0 0 1-1.66 0l-8.57-3.91a1 1 0 0 1 0-1.83l4.48-2.04"/><path d="M16.95 14.14a5 2.5 0 1 1-9.9 0L10.06 3.5a2 2 0 0 1 3.87 0z"/><path d="M9.19 6.57a5 2.5 0 0 0 5.61 0"/></symbol>
+    <symbol id="i-insta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol>
+    <symbol id="i-apple" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></symbol>
+    <symbol id="i-play-store" viewBox="0 0 24 24"><path fill="#34A853" d="M1.22 0C.49.38 0 1.15 0 2.09v19.82C0 22.85.49 23.62 1.22 24L13 12.22 1.22 0z"/><path fill="#FBBC04" d="M22.54 10.67l-3.41-1.97-3.13 3.07 3.13 3.07 3.41-1.97c.97-.56.97-1.64 0-2.2z"/><path fill="#EA4335" d="M16 11.77L1.22 24C1.6 24.26 2.07 24.2 2.5 23.96L18.62 14.6 16 11.77z"/><path fill="#4285F4" d="M16 11.77L2.5.04C2.07-.2 1.6-.26 1.22 0L16 11.77z"/></symbol>
+  </defs>
+</svg>
 
-  <section id="invalido" hidden>
-    <h1 id="invalido-titulo">Link indispon√≠vel</h1>
-    <p id="invalido-texto">Este link n√£o √© v√°lido.</p>
-  </section>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<div class="scroll-progress" aria-hidden="true"></div>
+<div class="cursor" aria-hidden="true"><div class="cursor__ring"></div><div class="cursor__dot"></div></div>
 
-  <section id="resgate" hidden>
-    <h1 id="titulo"></h1>
-    <p id="subtitulo"></p>
-    <ul>
-      <li>Todo o app, exceto o assistente com IA</li>
-      <li>Sem cart√£o e sem cobran√ßa autom√°tica ao final</li>
-      <li>Um resgate por conta</li>
-    </ul>
-    <p id="prazo"></p>
-    <form id="formulario">
-      <label>E-mail da sua conta no app
-        <input id="email" type="email" autocomplete="username" required>
-      </label>
-      <label>Senha do app
-        <input id="senha" type="password" autocomplete="current-password" required>
-      </label>
-      <button id="botao" type="submit">Resgatar acesso</button>
-      <p id="erro" class="erro" role="alert" hidden></p>
-    </form>
-    <p class="pequeno">Ainda n√£o tem conta? Baixe o app, crie sua conta e volte a este link:
-      <a href="https://apps.apple.com/br/app/ta-safo/id6757497748">iPhone</a> ¬∑
-      <a href="https://play.google.com/store/apps/details?id=com.tasafo.app">Android</a>.
-      Para recuperar a senha, use a op√ß√£o do pr√≥prio app.</p>
-  </section>
+<!-- NAVEGAÇÃO -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a href="#topo" class="brand" aria-label="Tá Safo — início">
+      <img src="assets/img/logo-128.webp" width="40" height="40" alt="" />
+      Tá Safo
+    </a>
+    <nav class="nav__links" aria-label="Seções">
+      <a href="#assistente">Assistente IA</a>
+      <a href="#ficha">Ficha da infração</a>
+      <a href="#ferramentas">Ferramentas</a>
+      <a href="#tour">Tour</a>
+      <a href="#duvidas">Dúvidas</a>
+    </nav>
+    <a href="#baixar" class="btn btn--yellow btn--sm nav__cta" data-magnetic>Baixar o app</a>
+    <button class="nav__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu"><span></span></button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <a href="#assistente">Assistente IA</a>
+  <a href="#ficha">Ficha da infração</a>
+  <a href="#ferramentas">Ferramentas</a>
+  <a href="#tour">Tour do app</a>
+  <a href="#duvidas">Dúvidas</a>
+  <div class="store-row">
+    <a class="store store--light" href="https://apps.apple.com/br/app/ta-safo/id6757497748" target="_blank" rel="noopener">
+      <svg aria-hidden="true"><use href="#i-apple"/></svg><span class="store__txt"><small>Baixar na</small><strong>App Store</strong></span>
+    </a>
+    <a class="store store--light" href="https://play.google.com/store/apps/details?id=com.tasafo.app&amp;hl=pt_BR" target="_blank" rel="noopener">
+      <svg aria-hidden="true"><use href="#i-play-store"/></svg><span class="store__txt"><small>Disponível no</small><strong>Google Play</strong></span>
+    </a>
+  </div>
+</div>
 
-  <section id="pronto" hidden>
-    <h1>Acesso liberado</h1>
-    <p class="ok" id="pronto-data"></p>
-    <p>Feche o T√° Safo por completo e abra de novo. Se ainda aparecer a tela de planos, aguarde alguns minutos e abra novamente.</p>
-    <p class="aviso" id="pronto-loja" hidden>Sua conta tem uma assinatura ativa na loja, e este benef√≠cio n√£o a cancela. Para n√£o ser cobrado, cancele nos Ajustes do iPhone ou no Google Play.</p>
-  </section>
+<main id="conteudo">
+
+<!-- HERO -->
+<section class="hero" id="topo" aria-labelledby="hero-h1">
+  <div class="hero__grid-bg" aria-hidden="true"></div>
+  <div class="hero__spot" aria-hidden="true"></div>
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <h1 class="hero__badge" id="hero-h1" data-reveal>
+        <span class="mascot" data-mascot></span>
+        Tá Safo: app para agentes de trânsito <b>· iPhone e Android</b>
+      </h1>
+      <p class="h-display" id="hero-title" data-split>Descreva a abordagem. <span class="mark">Receba o enquadramento.</span></p>
+      <p class="lead" data-reveal style="--d:.35s">O parceiro de bolso do agente de trânsito: todo o CTB com orientação de quem fiscaliza — quando autuar, quando não autuar e o que escrever no AIT. E um assistente com inteligência artificial que enquadra a situação que você descreve.</p>
+      <div class="store-row" data-reveal style="--d:.5s">
+        <a class="store" href="https://apps.apple.com/br/app/ta-safo/id6757497748" target="_blank" rel="noopener" data-magnetic>
+          <svg aria-hidden="true"><use href="#i-apple"/></svg><span class="store__txt"><small>Baixar na</small><strong>App Store</strong></span>
+        </a>
+        <a class="store store--light" href="https://play.google.com/store/apps/details?id=com.tasafo.app&amp;hl=pt_BR" target="_blank" rel="noopener" data-magnetic>
+          <svg aria-hidden="true"><use href="#i-play-store"/></svg><span class="store__txt"><small>Disponível no</small><strong>Google Play</strong></span>
+        </a>
+      </div>
+      <div class="hero__trust" data-reveal style="--d:.62s">
+        <span><svg aria-hidden="true"><use href="#i-check"/></svg>414 infrações com ficha completa</span>
+        <span><svg aria-hidden="true"><use href="#i-check"/></svg>3.295 orientações de fiscalização</span>
+        <span><svg aria-hidden="true"><use href="#i-check"/></svg>Assistente com IA</span>
+      </div>
+    </div>
+
+    <div class="hero__stage" data-reveal="scale" style="--d:.2s">
+      <div class="hero__tilt" id="heroTilt">
+        <div class="siren-halo siren-halo--b" aria-hidden="true"></div>
+        <div class="siren-halo siren-halo--r" aria-hidden="true"></div>
+        <div class="phone" data-depth="0">
+          <div class="phone__screen" id="heroScreens">
+            <img class="screen-layer is-active" src="divulgacao-site/prints-web/03-inicio.webp" width="720" height="1564" alt="Tela inicial do Tá Safo: “O que vamos consultar hoje?”, busca, acesso rápido e infrações consultadas recentemente" fetchpriority="high" />
+            <img class="screen-layer" src="divulgacao-site/prints-web/28-assistente-resposta.webp" width="720" height="1564" alt="Assistente de infrações respondendo com a infração 763-32" loading="lazy" />
+            <img class="screen-layer" src="divulgacao-site/prints-web/06-ficha-infracao.webp" width="720" height="1564" alt="Ficha da infração 518-51 com valor, pontos, infrator e competência" loading="lazy" />
+            <img class="screen-layer" src="divulgacao-site/prints-web/15-calculadora-etilometro.webp" width="720" height="1564" alt="Calculadora do etilômetro mostrando crime de trânsito para 0,42 mg/L" loading="lazy" />
+            <div class="phone__glare" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <div class="float-card fc-1" data-parallax="28" aria-hidden="true">
+          <div class="bob">
+            <div class="float-card__row"><span class="float-card__code">763-32</span><span class="badge badge--gravissima">Gravíssima</span></div>
+            <small>Art. 252, parágrafo único · 7 pontos</small>
+          </div>
+        </div>
+        <div class="float-card fc-2" data-parallax="-34" aria-hidden="true">
+          <div class="bob">
+            <div class="mini-bal mini-bal--ok"><i></i>Quando autuar</div>
+            <div class="mini-bal mini-bal--no"><i></i>Quando não autuar</div>
+          </div>
+        </div>
+        <div class="float-card fc-3" data-parallax="22" aria-hidden="true">
+          <div class="bob">
+            <small>Etilômetro · 0,42 mg/L</small>
+            <div class="float-card__row" style="margin-top:4px"><strong style="color:var(--red)">Crime de trânsito</strong></div>
+            <small>Art. 306 do CTB</small>
+          </div>
+        </div>
+        <div class="float-card fc-4 bare" data-parallax="-18" aria-hidden="true">
+          <div class="bob"><span class="mascot" data-mascot></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true"><span>Role</span><div class="scroll-cue__line"></div></div>
+</section>
+
+<!-- FAIXA -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track">
+    <div class="ticker__group">
+      <span class="ticker__item">Descreva a abordagem. Receba o enquadramento.</span>
+      <span class="ticker__item">Todo o CTB no bolso</span>
+      <span class="ticker__item">Quando autuar, quando não autuar e o que escrever no AIT</span>
+      <span class="ticker__item">Consulta em segundos, na rua, no meio da abordagem</span>
+    </div>
+    <div class="ticker__group">
+      <span class="ticker__item">Descreva a abordagem. Receba o enquadramento.</span>
+      <span class="ticker__item">Todo o CTB no bolso</span>
+      <span class="ticker__item">Quando autuar, quando não autuar e o que escrever no AIT</span>
+      <span class="ticker__item">Consulta em segundos, na rua, no meio da abordagem</span>
+    </div>
+  </div>
+</div>
+
+<!-- NÚMEROS -->
+<section class="stats" aria-labelledby="stats-title">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>O app em números</span>
+      <h2 class="h-section" id="stats-title" data-split style="margin-top:18px">Conteúdo de verdade, organizado para a fiscalização.</h2>
+    </div>
+    <div class="stats__grid">
+      <div class="stat spot" data-reveal><div class="stat__num" data-count="414">414</div><p class="stat__label">infrações do CTB, cada uma com ficha completa</p><i class="stat__bar"></i></div>
+      <div class="stat spot" data-reveal style="--d:.08s"><div class="stat__num" data-count="3295">3.295</div><p class="stat__label">orientações de fiscalização: autuar, não autuar e outras situações</p><i class="stat__bar"></i></div>
+      <div class="stat spot" data-reveal style="--d:.16s"><div class="stat__num" data-count="57">57</div><p class="stat__label">placas de regulamentação, com significado</p><i class="stat__bar"></i></div>
+      <div class="stat spot" data-reveal style="--d:.24s"><div class="stat__num" data-count="50">50</div><p class="stat__label">resoluções do CONTRAN resumidas em linguagem simples</p><i class="stat__bar"></i></div>
+      <div class="stat spot" data-reveal><div class="stat__num" data-count="400" data-suffix="+">400<sup>+</sup></div><p class="stat__label">situações de fiscalização testadas no assistente, com resposta conferida</p><i class="stat__bar"></i></div>
+      <div class="stat spot" data-reveal style="--d:.08s"><div class="stat__num" data-count="9">9</div><p class="stat__label">modelos de histórico prontos para copiar, em 4 categorias</p><i class="stat__bar"></i></div>
+      <div class="stat spot" data-reveal style="--d:.16s"><div class="stat__num" data-count="8">8</div><p class="stat__label">tipos de veículo no tutorial de abordagem</p><i class="stat__bar"></i></div>
+      <div class="stat spot" data-reveal style="--d:.24s"><div class="stat__num" data-count="11">11</div><p class="stat__label">tipos de veículo em “Diferenciar veículos”</p><i class="stat__bar"></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- ASSISTENTE -->
+<section class="section on-navy assistant" id="assistente" aria-labelledby="ai-title">
+  <div class="container">
+    <div class="assistant__grid">
+      <div>
+        <span class="eyebrow eyebrow--light" data-reveal>Assistente com inteligência artificial</span>
+        <h2 class="h-section" id="ai-title" data-split style="margin-top:18px">Fale como falaria com um colega. <span class="text-yellow">Ele devolve o enquadramento.</span></h2>
+        <p class="lead" data-reveal style="margin-top:22px">Descreva a situação com as suas palavras — por exemplo, <em>“motorista vendo vídeo no celular preso no painel com o carro andando”</em>. A resposta vem pronta para a abordagem:</p>
+        <ul class="assistant__list">
+          <li data-reveal><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Código da infração</b> e o artigo do CTB</span></li>
+          <li data-reveal style="--d:.06s"><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Gravidade, pontos e valor</b> da multa</span></li>
+          <li data-reveal style="--d:.12s"><svg aria-hidden="true"><use href="#i-check"/></svg><span>A <b>medida administrativa</b></span></li>
+          <li data-reveal style="--d:.18s"><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Por que é esse código</b> e não outro parecido — ex.: 763-32 “manuseando” e não 736-62 “utilizando”</span></li>
+          <li data-reveal style="--d:.24s"><svg aria-hidden="true"><use href="#i-check"/></svg><span>Os <b>cuidados da orientação</b> de fiscalização — celular no suporte usando GPS não se autua; assistindo vídeo, sim</span></li>
+          <li data-reveal style="--d:.30s"><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Várias condutas?</b> Ele separa cada uma, diz qual autuar e qual não autuar, e fecha com um resumo da abordagem</span></li>
+        </ul>
+        <p class="disclaimer" data-reveal><svg aria-hidden="true"><use href="#i-info"/></svg><span>O assistente é uma ferramenta de apoio: a decisão final e a responsabilidade pelo auto são sempre do agente.</span></p>
+      </div>
+
+      <div class="chat" id="chat" data-reveal="right" role="region" aria-label="Demonstração do assistente de infrações">
+        <div class="chat__head">
+          <span class="mascot" data-mascot></span>
+          <div>
+            <div class="chat__title">Assistente de Infrações</div>
+            <div class="chat__sub">Powered by Claude AI</div>
+          </div>
+          <span class="chat__live"><i></i>Demo</span>
+        </div>
+        <div class="chat__body" id="chatBody" aria-live="polite">
+          <div class="msg msg--bot">
+            <span class="mascot" data-mascot></span>
+            <div class="msg__bubble">
+              <p>Olá! Sou seu assistente de infrações de trânsito.</p>
+              <p>Descreva a situação que você presenciou e eu identifico a infração, o artigo do CTB, a gravidade e o valor da multa.</p>
+              <p><strong>Toque num exemplo abaixo</strong> para ver como a resposta chega.</p>
+            </div>
+          </div>
+        </div>
+        <div class="chat__chips" role="group" aria-label="Exemplos de situações">
+          <button class="chip" type="button" data-ask="video">Vendo vídeo no celular preso no painel</button>
+          <button class="chip" type="button" data-ask="segurando">Dirigindo segurando o celular</button>
+          <button class="chip" type="button" data-ask="cinto">Condutor sem cinto</button>
+        </div>
+        <form class="chat__form" id="chatForm" autocomplete="off">
+          <label class="sr-only" for="chatInput">Descreva a situação</label>
+          <input class="chat__input" id="chatInput" type="text" placeholder="Descreva a situação…" maxlength="160" />
+          <button class="chat__send" type="submit" aria-label="Enviar"><svg aria-hidden="true"><use href="#i-send"/></svg></button>
+        </form>
+        <p class="chat__foot">Demo: o exemplo do celular no painel é uma resposta real do app; os demais foram montados com as fichas.</p>
+      </div>
+    </div>
+
+    <!-- Como ele pensa -->
+    <div class="pipeline">
+      <div>
+        <span class="eyebrow eyebrow--light" data-reveal>Como funciona</span>
+        <h3 class="h-section" data-split style="margin-top:18px;font-size:clamp(28px,3.4vw,42px)">Não inventa código. Confere antes de responder.</h3>
+        <div class="steps" id="steps" style="margin-top:34px">
+          <div class="steps__line" aria-hidden="true"><i></i></div>
+          <div class="step" data-reveal><span class="step__n">1</span><div><h3>Você descreve</h3><p>Com as próprias palavras, do jeito que falaria com um colega.</p></div></div>
+          <div class="step" data-reveal><span class="step__n">2</span><div><h3>Ele escolhe as infrações possíveis</h3><p>Só trabalha com as 414 infrações e as orientações de fiscalização cadastradas no app.</p></div></div>
+          <div class="step" data-reveal><span class="step__n">3</span><div><h3>Lê as fichas completas</h3><p>Confere a ficha e as orientações de cada infração antes de responder.</p></div></div>
+          <div class="step" data-reveal><span class="step__n">4</span><div><h3>Você recebe o enquadramento</h3><p>Código, artigo, gravidade, pontos, valor, medida e o porquê. Perguntas que já foram respondidas antes voltam na hora.</p></div></div>
+        </div>
+        <div class="proof" data-reveal>
+          <div class="proof__item"><strong>400+</strong><span>situações de fiscalização<br />com resposta conferida</span></div>
+          <div class="proof__item"><svg width="26" height="26" aria-hidden="true" style="color:var(--yellow)"><use href="#i-sparkles"/></svg><span>Modelos Claude,<br />da Anthropic</span></div>
+        </div>
+      </div>
+      <figure class="video-phone" data-reveal="scale">
+        <div class="phone" data-tilt>
+          <div class="phone__screen">
+            <video class="lazy-video" muted loop playsinline preload="none" poster="assets/video/assistente-ia-poster.jpg" aria-label="Vídeo: o assistente respondendo “motorista vendo vídeo no celular preso no painel com o carro andando” com a infração 763-32">
+              <source data-src="assets/video/assistente-ia.mp4" type="video/mp4" />
+              <source data-src="assets/video/assistente-ia.webm" type="video/webm" />
+            </video>
+            <button class="video-toggle" type="button" aria-label="Pausar vídeo"><svg aria-hidden="true"><use href="#i-pause"/></svg></button>
+          </div>
+        </div>
+        <figcaption>Resposta real do app: 763-32, por que não 736-62 e o cuidado com o GPS.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- FICHA -->
+<section class="section" id="ficha" aria-labelledby="ficha-title">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Ficha completa da infração</span>
+      <h2 class="h-section" id="ficha-title" data-split style="margin-top:18px">Cada uma das 414 infrações com uma ficha <span class="mark">pensada para a abordagem.</span></h2>
+    </div>
+
+    <div class="ficha__grid">
+      <div class="ficha__steps" id="fichaSteps">
+        <article class="fstep" data-screen="0">
+          <span class="fstep__n">1</span>
+          <h3>Gravidade, valor e pontos em um quadro só.</h3>
+          <p>A gravidade e a descrição em destaque. Logo abaixo, valor da multa, pontos, infrator (condutor, proprietário…) e competência (municipal, estadual, rodoviária).</p>
+          <ul><li>R$ 195,23</li><li>5 pontos</li><li>Condutor</li><li>Est. Mun. e Rod.</li></ul>
+          <div class="fstep__phone"><div class="phone"><div class="phone__screen"><img src="divulgacao-site/prints-web/06-ficha-infracao.webp" width="720" height="1564" alt="Ficha da infração 518-51" loading="lazy" /></div></div></div>
+        </article>
+        <article class="fstep" data-screen="1">
+          <span class="fstep__n">2</span>
+          <h3>Selos e o passo a passo da fiscalização.</h3>
+          <p>Dispensa abordagem ou abordagem obrigatória, passível de TCO e o alerta “Pode se tornar crime”, com atalho para a ficha do crime. Depois, <strong>como proceder</strong> e a <strong>medida administrativa</strong>.</p>
+          <ul><li>Dispensa abordagem</li><li>Passível de TCO</li><li>Pode se tornar crime</li></ul>
+          <div class="fstep__phone"><div class="phone"><div class="phone__screen"><img src="divulgacao-site/prints-web/06b-ficha-infracao-celular.webp" width="720" height="1564" alt="Ficha da infração 763-31, dirigir segurando celular" loading="lazy" /></div></div></div>
+        </article>
+        <article class="fstep" data-screen="2">
+          <span class="fstep__n">3</span>
+          <h3>Quando autuar. Quando não autuar.</h3>
+          <p>Orientações em balões <strong style="color:var(--green)">verdes</strong> (autuar) e <strong style="color:var(--red)">vermelhos</strong> (não autuar), mais “Outras situações”. Toque num tema para ver a orientação.</p>
+          <div class="fstep__phone"><div class="phone"><div class="phone__screen"><img src="divulgacao-site/prints-web/07-quando-autuar-e-nao-autuar.webp" width="720" height="1564" alt="Orientações em balões verdes e vermelhos" loading="lazy" /></div></div></div>
+        </article>
+        <article class="fstep" data-screen="3">
+          <span class="fstep__n">4</span>
+          <h3>Cada orientação abre com um toque.</h3>
+          <p>O texto completo da orientação de fiscalização, com botão <strong>Copiar</strong>. Exemplo real: veículo de coleção sem cinto original não se autua.</p>
+          <div class="fstep__phone"><div class="phone"><div class="phone__screen"><img src="divulgacao-site/prints-web/08-orientacao-aberta.webp" width="720" height="1564" alt="Orientação aberta sobre veículos de coleção sem cinto original" loading="lazy" /></div></div></div>
+        </article>
+        <article class="fstep" data-screen="4">
+          <span class="fstep__n">5</span>
+          <h3>O texto do AIT já vem pronto.</h3>
+          <p>O <strong>campo de observação no AIT</strong> traz o texto pronto para usar, com botão <strong>Copiar</strong>. Menos tempo digitando, mais atenção na abordagem.</p>
+          <div class="fstep__phone"><div class="phone"><div class="phone__screen"><img src="divulgacao-site/prints-web/09-campo-observacao-ait.webp" width="720" height="1564" alt="Campo de observação no AIT com botão Copiar" loading="lazy" /></div></div></div>
+        </article>
+      </div>
+      <div class="ficha__side" aria-hidden="true">
+        <div class="ficha__sticky">
+          <div class="phone" data-tilt>
+            <div class="phone__screen" id="fichaScreens">
+              <img class="screen-layer is-active" src="divulgacao-site/prints-web/06-ficha-infracao.webp" width="720" height="1564" alt="" loading="lazy" />
+              <img class="screen-layer" src="divulgacao-site/prints-web/06b-ficha-infracao-celular.webp" width="720" height="1564" alt="" loading="lazy" />
+              <img class="screen-layer" src="divulgacao-site/prints-web/07-quando-autuar-e-nao-autuar.webp" width="720" height="1564" alt="" loading="lazy" />
+              <img class="screen-layer" src="divulgacao-site/prints-web/08-orientacao-aberta.webp" width="720" height="1564" alt="" loading="lazy" />
+              <img class="screen-layer" src="divulgacao-site/prints-web/09-campo-observacao-ait.webp" width="720" height="1564" alt="" loading="lazy" />
+              <div class="phone__glare"></div>
+            </div>
+          </div>
+          <div class="ficha__dots" id="fichaDots"><i class="is-active"></i><i></i><i></i><i></i><i></i></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Réplica interativa -->
+    <div class="replica">
+      <div class="replica__copy" data-reveal>
+        <span class="eyebrow">Experimente</span>
+        <h3 class="h-card" style="margin-top:16px">Toque nos temas, como no app.</h3>
+        <p>Um pedaço da ficha real da <strong>518-51</strong> — deixar o condutor de usar o cinto de segurança. Abra as orientações e copie o texto do AIT.</p>
+        <ul class="replica__facts">
+          <li><svg aria-hidden="true"><use href="#i-info"/></svg>Mesmo com vários ocupantes sem cinto, só cabe uma autuação pelo art. 167.</li>
+          <li><svg aria-hidden="true"><use href="#i-info"/></svg>Cinto com defeito vai pelo art. 230, IX.</li>
+          <li><svg aria-hidden="true"><use href="#i-info"/></svg>Veículo de coleção sem cinto original não se autua.</li>
+        </ul>
+      </div>
+      <div class="replica__panel" data-reveal="right">
+        <div class="replica__top"><strong>518-51</strong><span>Art. 167.</span><span class="badge badge--grave">Grave</span></div>
+        <div class="replica__body">
+          <div class="rgroup rgroup--ok">
+            <h4><span class="ico"><svg aria-hidden="true"><use href="#i-check"/></svg></span>Quando autuar no 518-51</h4>
+            <small>Toque num tema para ver a orientação.</small>
+            <div class="acc acc--ok">
+              <button class="acc__btn" type="button" aria-expanded="false"><i></i>Condutor não está usando o cinto de segurança<svg aria-hidden="true"><use href="#i-down"/></svg></button>
+              <div class="acc__panel"><div><div class="acc__content"><span class="copy-src">Autuar quando o condutor não estiver usando o cinto de segurança naqueles veículos em que tal equipamento é exigido. O condutor deve estar com o cinto afivelado e corretamente posicionado conforme especificações do fabricante. A fivela solta em posição de repouso caracteriza a infração.</span><button class="copy-btn" type="button"><svg aria-hidden="true"><use href="#i-copy"/></svg>Copiar</button></div></div></div>
+            </div>
+          </div>
+          <div class="rgroup rgroup--no">
+            <h4><span class="ico"><svg aria-hidden="true"><use href="#i-x"/></svg></span>Quando não autuar no 518-51</h4>
+            <small>Toque num tema para ver a orientação.</small>
+            <div class="acc acc--no">
+              <button class="acc__btn" type="button" aria-expanded="false"><i></i>Condutores de veículos de coleção sem cinto original<svg aria-hidden="true"><use href="#i-down"/></svg></button>
+              <div class="acc__panel"><div><div class="acc__content"><span class="copy-src">NÃO autuar condutores ou passageiros de veículos de coleção que originalmente não foram dotados de cintos de segurança. Veículos antigos preservados em suas características originais podem estar isentos desta obrigatoriedade.</span><button class="copy-btn" type="button"><svg aria-hidden="true"><use href="#i-copy"/></svg>Copiar</button></div></div></div>
+            </div>
+          </div>
+          <div class="rgroup rgroup--info">
+            <h4><span class="ico"><svg aria-hidden="true"><use href="#i-list"/></svg></span>Outras situações</h4>
+            <small>Toque num tema para ver a orientação.</small>
+            <div class="acc acc--info">
+              <button class="acc__btn" type="button" aria-expanded="false"><i></i>Apenas uma autuação mesmo com múltiplos ocupantes sem cinto<svg aria-hidden="true"><use href="#i-down"/></svg></button>
+              <div class="acc__panel"><div><div class="acc__content"><span class="copy-src">Ainda que haja mais de um ocupante sem usar o cinto (incluído o condutor), somente poderá haver UMA autuação com base no art. 167.</span><button class="copy-btn" type="button"><svg aria-hidden="true"><use href="#i-copy"/></svg>Copiar</button></div></div></div>
+            </div>
+            <div class="acc acc--info">
+              <button class="acc__btn" type="button" aria-expanded="false"><i></i>Quando o motivo é falta ou defeito no equipamento<svg aria-hidden="true"><use href="#i-down"/></svg></button>
+              <div class="acc__panel"><div><div class="acc__content"><span class="copy-src">Se o motivo da não utilização for falta ou defeito no equipamento, autuar apenas pelo art. 230, IX.</span><button class="copy-btn" type="button"><svg aria-hidden="true"><use href="#i-copy"/></svg>Copiar</button></div></div></div>
+            </div>
+          </div>
+          <div class="ait">
+            <div class="ait__head"><span class="ico"><svg aria-hidden="true"><use href="#i-pen"/></svg></span>Campo de observação no AIT<button class="copy-btn" type="button" data-copy-target="#aitText"><svg aria-hidden="true"><use href="#i-copy"/></svg>Copiar</button></div>
+            <p class="ait__text" id="aitText">1. Condutor não usava cinto de segurança. A fivela estava em posição de repouso e visível próximo à coluna do veículo. 2. Condutor usava o cinto com a parte superior (faixa diagonal) sob o braço. 3. Condutor usava o cinto com a parte superior (faixa diagonal) atrás do corpo. 4. Condutor usava o cinto sem utilizar a sua parte inferior.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUSCA -->
+<section class="section search-sec" id="busca" aria-labelledby="busca-title">
+  <div class="container search__grid">
+    <div>
+      <span class="eyebrow" data-reveal>Busca e lista de infrações</span>
+      <h2 class="h-section" id="busca-title" data-split style="margin-top:18px">Busque por código, artigo ou palavra.</h2>
+      <p class="lead" data-reveal style="margin-top:20px">Filtre por gravidade — Leve, Média, Grave, Gravíssima — ou pelas Recentes, e favorite com uma estrela direto na lista. Seus favoritos ficam separados em Infrações e Crimes, sincronizados com a sua conta.</p>
+      <ul class="kbd-list" data-reveal>
+        <li><button class="kbd" type="button" data-try="518-51">518-51</button>por código</li>
+        <li><button class="kbd" type="button" data-try="252">252</button>por artigo</li>
+        <li><button class="kbd" type="button" data-try="cinto">cinto</button>por palavra</li>
+      </ul>
+    </div>
+    <div class="search__demo spot" data-reveal="right">
+      <div class="search__box">
+        <svg aria-hidden="true"><use href="#i-search"/></svg>
+        <label class="sr-only" for="searchInput">Buscar infração, código ou artigo</label>
+        <input class="search__input" id="searchInput" type="search" placeholder="Infração, código ou artigo" autocomplete="off" />
+      </div>
+      <div class="search__filters" role="group" aria-label="Filtrar por gravidade">
+        <button class="chip is-active" type="button" data-filter="all" aria-pressed="true">Todas</button>
+        <button class="chip" type="button" data-filter="Grave" aria-pressed="false">Grave</button>
+        <button class="chip" type="button" data-filter="Gravíssima" aria-pressed="false">Gravíssima</button>
+        <button class="chip" type="button" data-filter="fav" aria-pressed="false">★ Favoritas</button>
+      </div>
+      <div class="search__meta"><span id="searchCount" aria-live="polite">10 infrações encontradas</span><span>Amostra · no app são 414</span></div>
+      <div class="results" id="results"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FERRAMENTAS -->
+<section class="section" id="ferramentas" aria-labelledby="tools-title">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Consultas e ferramentas de campo</span>
+      <h2 class="h-section" id="tools-title" data-split style="margin-top:18px">Tudo o que a abordagem pede, <span class="mark">a um toque.</span></h2>
+      <p class="lead" data-reveal>Da calculadora do etilômetro às placas de regulamentação — teste as ferramentas abaixo.</p>
+    </div>
+
+    <div class="tools__grid">
+      <!-- Etilômetro -->
+      <article class="tool tool--calc spot" data-reveal aria-labelledby="calc-title">
+        <span class="tool__icon ic-orange"><svg aria-hidden="true"><use href="#i-wind"/></svg></span>
+        <span class="tool__kicker">Calculadora do etilômetro</span>
+        <h3 class="h-card" id="calc-title">Digite o valor medido. O resultado e as providências aparecem na hora.</h3>
+        <div class="calc">
+          <div>
+            <div class="calc__field">
+              <label class="calc__label" for="calcInput">Valor do Etilômetro (mg/L)</label>
+              <input class="calc__input" id="calcInput" type="text" inputmode="decimal" value="0,42" aria-describedby="calcResult" />
+              <span class="calc__unit">mg/L</span>
+            </div>
+            <label class="sr-only" for="calcRange">Ajustar valor</label>
+            <input class="calc__range" id="calcRange" type="range" min="0" max="0.6" step="0.01" value="0.42" />
+            <div class="gauge-wrap" aria-hidden="true">
+              <div class="gauge"><span class="gauge__ok"></span><span class="gauge__inf"></span><span class="gauge__crime"></span></div>
+              <i class="gauge__marker" id="gaugeMarker"></i>
+            </div>
+            <div class="gauge__legend" aria-hidden="true"><span>0,00</span><span>0,05</span><span>0,34</span><span>0,60+</span></div>
+            <div class="calc__quick" role="group" aria-label="Valores de exemplo">
+              <button class="chip" type="button" data-val="0,03">0,03</button>
+              <button class="chip" type="button" data-val="0,20">0,20</button>
+              <button class="chip" type="button" data-val="0,42">0,42</button>
+            </div>
+          </div>
+          <div class="result result--crime" id="calcResult" aria-live="polite"></div>
+        </div>
+        <div class="calc-info">
+          <h4><svg aria-hidden="true"><use href="#i-info"/></svg>Informação</h4>
+          <ul>
+            <li><i style="background:#34A56F"></i>Até 0,04 mg/L: dentro da tolerância, sem providências</li>
+            <li><i style="background:#F5A524"></i>De 0,05 a 0,33 mg/L: infração de trânsito (art. 165 do CTB)</li>
+            <li><i style="background:#E5484D"></i>A partir de 0,34 mg/L: crime de trânsito (art. 306 do CTB)</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Históricos -->
+      <article class="tool tool--hist spot" data-reveal style="--d:.1s" aria-labelledby="hist-title">
+        <span class="tool__icon ic-green"><svg aria-hidden="true"><use href="#i-pen"/></svg></span>
+        <span class="tool__kicker">Modelos de histórico</span>
+        <h3 class="h-card" id="hist-title">9 textos prontos, com campos para preencher.</h3>
+        <p class="tool__desc">Botão <strong>Copiar Histórico</strong> e os passos para execução em cada modelo.</p>
+        <div class="hist-cats">
+          <div class="hist-cat"><span class="tool__icon ic-red"><svg aria-hidden="true"><use href="#i-glass"/></svg></span><div><strong>Embriaguez</strong><small>Teste recusado · positivo (infração) · positivo (crime)</small></div></div>
+          <div class="hist-cat"><span class="tool__icon ic-orange"><svg aria-hidden="true"><use href="#i-id"/></svg></span><div><strong>Inabilitado</strong><small>Sem CNH · CNH vencida há mais de 30 dias</small></div></div>
+          <div class="hist-cat"><span class="tool__icon ic-blue"><svg aria-hidden="true"><use href="#i-cone"/></svg></span><div><strong>Infrações diversas</strong><small>Avanço de sinal vermelho · celular ao volante</small></div></div>
+          <div class="hist-cat"><span class="tool__icon ic-purple"><svg aria-hidden="true"><use href="#i-siren"/></svg></span><div><strong>Acidentes</strong><small>Sem vítima · com vítima</small></div></div>
+        </div>
+        <div class="hist-sample">
+          Durante operação de fiscalização de trânsito, o veículo <span class="fill">[MARCA/MODELO]</span>, placa <span class="fill">[PLACA]</span>, foi abordado. O condutor <span class="fill">[NOME COMPLETO]</span>, CPF <span class="fill">[CPF]</span>, CNH <span class="fill">[Nº CNH]</span> apresentava sinais de embriaguez como: <span class="fill">[DESCREVER SINAIS VISÍVEIS, se houver]</span>…
+          <div class="hist-sample__fade"></div>
+        </div>
+        <div class="hist-sample__foot"><span>Embriaguez — teste positivo (infração)</span><button class="copy-btn" type="button" aria-label="Copiar trecho do modelo" data-copy-text="Durante operação de fiscalização de trânsito, o veículo [MARCA/MODELO], placa [PLACA], foi abordado. O condutor [NOME COMPLETO], CPF [CPF], CNH [Nº CNH] apresentava sinais de embriaguez como: [DESCREVER SINAIS VISÍVEIS, se houver]."><svg aria-hidden="true"><use href="#i-copy"/></svg>Copiar trecho</button></div>
+      </article>
+
+      <!-- Crimes -->
+      <article class="tool tool--crime spot" data-reveal aria-labelledby="crime-title">
+        <span class="tool__icon ic-navy"><svg aria-hidden="true"><use href="#i-gavel"/></svg></span>
+        <span class="tool__kicker">Crimes de trânsito</span>
+        <h3 class="h-card" id="crime-title">Arts. 302 a 312 — texto da lei, pena e flagrante.</h3>
+        <p class="tool__desc">Inclui os arts. 312-A e 312-B, com busca por artigo ou palavra e favoritos.</p>
+        <div class="crime-search"><svg aria-hidden="true"><use href="#i-search"/></svg><label class="sr-only" for="crimeInput">Buscar crime por artigo ou palavra</label><input id="crimeInput" type="search" placeholder="Artigo ou palavra do crime" autocomplete="off" /></div>
+        <div class="crime-list" id="crimeList">
+          <div class="crime" data-kw="embriaguez alcoolemia bafometro etilometro"><div class="crime__top"><strong>Art. 306</strong><span class="badge badge--crime">Cabe flagrante</span></div><p>Conduzir veículo automotor com capacidade psicomotora alterada em razão da influência de álcool ou de outra substância psicoativa que determine dependência.</p><p class="crime__pena">Pena: detenção de 6 a 36 meses</p></div>
+          <div class="crime" data-kw="fraude acidente"><div class="crime__top"><strong>Art. 312</strong><span class="badge badge--crime">Cabe flagrante</span></div><p>Inovar artificiosamente, em caso de acidente automobilístico com vítima, na pendência do respectivo procedimento…</p><p class="crime__pena">Pena: detenção ou multa de 6 a 12 meses</p></div>
+          <div class="crime" data-kw="velocidade escola hospital"><div class="crime__top"><strong>Art. 311-CTB</strong><span class="badge badge--crime">Cabe flagrante</span></div><p>Trafegar em velocidade incompatível com a segurança nas proximidades de escolas, hospitais, estações de embarque e desembarque de passageiros…</p><p class="crime__pena">Pena: detenção ou multa de 6 a 12 meses</p></div>
+          <div class="crime" data-kw="penas substituicao"><div class="crime__top"><strong>Art. 312-A</strong><span class="badge badge--info">Informativo</span></div><p>Para os crimes relacionados nos arts. 302 a 312 deste Código, nas situações em que o juiz aplicar a substituição…</p></div>
+        </div>
+        <div class="crime-flag"><svg aria-hidden="true"><use href="#i-shield"/></svg><div><strong>Prisão em flagrante</strong><span>Na ficha de cada crime, o app avisa quando o crime permite prisão em flagrante.</span></div></div>
+      </article>
+
+      <!-- Abordagem -->
+      <article class="tool tool--abord spot" data-reveal style="--d:.1s" aria-labelledby="abord-title">
+        <span class="tool__icon ic-blue"><svg aria-hidden="true"><use href="#i-shield"/></svg></span>
+        <span class="tool__kicker">Tutorial de abordagem</span>
+        <h3 class="h-card" id="abord-title">Passo a passo por tipo de veículo.</h3>
+        <p class="tool__desc">Documentos necessários, passos da abordagem e itens a verificar para 8 tipos de veículo.</p>
+        <div class="abord">
+          <div class="veh-list" role="group" aria-label="Tipos de veículo">
+            <button class="veh" type="button" aria-pressed="false"><span class="veh__ic"><svg aria-hidden="true"><use href="#i-car"/></svg></span>Carro de passeio</button>
+            <button class="veh" type="button" aria-pressed="true" data-veh="moto"><span class="veh__ic"><svg aria-hidden="true"><use href="#i-moto"/></svg></span>Motocicleta</button>
+            <button class="veh" type="button" aria-pressed="false"><span class="veh__ic"><svg aria-hidden="true"><use href="#i-zap"/></svg></span>Motocicleta elétrica</button>
+            <button class="veh" type="button" aria-pressed="false"><span class="veh__ic"><svg aria-hidden="true"><use href="#i-bus"/></svg></span>Ônibus</button>
+            <button class="veh" type="button" aria-pressed="false"><span class="veh__ic"><svg aria-hidden="true"><use href="#i-truck"/></svg></span>Caminhão</button>
+            <button class="veh" type="button" aria-pressed="false"><span class="veh__ic"><svg aria-hidden="true"><use href="#i-alert"/></svg></span>Produtos perigosos</button>
+            <button class="veh" type="button" aria-pressed="false"><span class="veh__ic"><svg aria-hidden="true"><use href="#i-snow"/></svg></span>Produtos perecíveis</button>
+            <button class="veh" type="button" aria-pressed="false"><span class="veh__ic"><svg aria-hidden="true"><use href="#i-tractor"/></svg></span>Trator</button>
+          </div>
+          <div class="abord__panel" id="abordPanel" aria-live="polite"></div>
+        </div>
+      </article>
+
+      <!-- Placas -->
+      <article class="tool tool--placas spot" data-reveal aria-labelledby="placas-title">
+        <span class="tool__icon ic-red"><svg aria-hidden="true"><use href="#i-octagon"/></svg></span>
+        <span class="tool__kicker">Placas de regulamentação</span>
+        <h3 class="h-card" id="placas-title">As 57 placas R, em alta definição.</h3>
+        <p class="tool__desc">Busca por código ou nome, filtros por grupo e o significado de cada uma. Passe o mouse (ou toque) para virar.</p>
+        <div class="plates" id="plates"></div>
+      </article>
+
+      <!-- Resoluções -->
+      <article class="tool tool--res spot" data-reveal style="--d:.1s" aria-labelledby="res-title">
+        <span class="tool__icon ic-yellow"><svg aria-hidden="true"><use href="#i-book"/></svg></span>
+        <span class="tool__kicker">Resoluções do CONTRAN</span>
+        <h3 class="h-card" id="res-title">50 resoluções resumidas em linguagem simples.</h3>
+        <div class="res-card">
+          <span class="badge badge--new">Nº 1.031/2026 · Nova</span>
+          <h4>Fiscalização de álcool e substâncias psicoativas — novos procedimentos que revogam e substituem a Resolução 432/2013</h4>
+          <p>Número, assunto e resumo de cada resolução, com busca por número ou assunto.</p>
+        </div>
+        <ul class="res-mini">
+          <li><span class="badge badge--info">Nº 804/2020</span>Fiscalização de velocidade</li>
+          <li><span class="badge badge--info">Nº 810/2020</span>Veículos acidentados</li>
+          <li><span class="badge badge--info">Nº 812/2020</span>Transportadores de contêineres</li>
+        </ul>
+      </article>
+
+      <!-- Diferenciar -->
+      <article class="tool tool--dif spot" data-reveal aria-labelledby="dif-title">
+        <div class="dif">
+          <div>
+            <span class="tool__icon ic-purple"><svg aria-hidden="true"><use href="#i-car"/></svg></span>
+            <span class="tool__kicker">Diferenciar veículos</span>
+            <h3 class="h-card" id="dif-title">Reboque ou semirreboque? Ciclomotor ou autopropelido?</h3>
+            <p class="tool__desc">Como distinguir, na prática, os veículos que confundem na fiscalização — com descrição, o que a lei exige de cada um e os pontos a verificar.</p>
+            <div class="dif__chips" id="difChips" role="group" aria-label="Tipos de veículo"></div>
+          </div>
+          <div class="dif__card" id="difCard" aria-live="polite"></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="extras">
+      <div class="extra spot" data-reveal><span class="tool__icon ic-navy"><svg aria-hidden="true"><use href="#i-home"/></svg></span><h3>Início inteligente</h3><p>Saudação, busca, acesso rápido e as infrações consultadas recentemente.</p></div>
+      <div class="extra spot" data-reveal style="--d:.06s"><span class="tool__icon ic-yellow"><svg aria-hidden="true"><use href="#i-star"/></svg></span><h3>Favoritos na conta</h3><p>Infrações e crimes separados, sincronizados com a sua conta.</p></div>
+      <div class="extra spot" data-reveal style="--d:.12s"><span class="tool__icon ic-blue"><svg aria-hidden="true"><use href="#i-book"/></svg></span><h3>CTB completo</h3><p>Link para o texto oficial, além de Contato e Sobre no Menu.</p></div>
+      <div class="extra spot" data-reveal style="--d:.18s"><span class="tool__icon ic-green"><svg aria-hidden="true"><use href="#i-lock"/></svg></span><h3>Conta sob controle</h3><p>Tutorial de primeiro acesso, “Lembrar-me”, recuperação de senha e exclusão de conta pelo próprio app.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TOUR -->
+<section class="section on-navy tour" id="tour" aria-labelledby="tour-title">
+  <div class="container tour__grid">
+    <div class="tour__copy">
+      <span class="eyebrow eyebrow--light" data-reveal>Tour do app</span>
+      <h2 class="h-section" id="tour-title" data-split style="margin-top:18px">49 segundos pelo Tá Safo.</h2>
+      <p class="lead" data-reveal style="margin-top:20px">Da tela inicial à ficha da 518-51, das orientações ao texto do AIT, do Menu às placas. Toque num capítulo para pular direto.</p>
+    </div>
+    <div class="tour__media" data-reveal="scale">
+      <p class="tour__label"><svg aria-hidden="true"><use href="#i-play"/></svg>Vídeo real do app · sem som</p>
+      <div class="phone" data-tilt style="position:relative">
+        <div class="phone__screen">
+          <video id="tourVideo" class="lazy-video" muted playsinline preload="none" poster="assets/video/tour-do-app-poster.jpg" aria-label="Vídeo: tour pelo app Tá Safo">
+            <source data-src="assets/video/tour-do-app.mp4" type="video/mp4" />
+            <source data-src="assets/video/tour-do-app.webm" type="video/webm" />
+          </video>
+          <button class="video-toggle" type="button" aria-label="Pausar vídeo"><svg aria-hidden="true"><use href="#i-pause"/></svg></button>
+        </div>
+        <div class="tour__progress" aria-hidden="true"><i id="tourProgress"></i></div>
+      </div>
+    </div>
+    <ol class="chapters" id="chapters" aria-label="Capítulos do vídeo"></ol>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section class="section gallery" id="telas" aria-labelledby="gal-title">
+  <div class="container gallery__head">
+    <div class="section-head" style="margin-bottom:0">
+      <span class="eyebrow" data-reveal>Todas as telas</span>
+      <h2 class="h-section" id="gal-title" data-split style="margin-top:18px">Arraste para conhecer o app por dentro.</h2>
+    </div>
+    <div class="gallery__nav" data-reveal>
+      <button class="round-btn" type="button" id="railPrev" aria-label="Telas anteriores"><svg aria-hidden="true"><use href="#i-left"/></svg></button>
+      <button class="round-btn" type="button" id="railNext" aria-label="Próximas telas"><svg aria-hidden="true"><use href="#i-right"/></svg></button>
+    </div>
+  </div>
+  <div class="rail" id="rail" tabindex="0" role="region" aria-label="Galeria de telas do app (use as setas do teclado)"></div>
+  <div class="rail-progress" aria-hidden="true"><i id="railProgress"></i></div>
+</section>
+
+<!-- PARA QUEM -->
+<section class="section" id="para-quem" aria-labelledby="who-title" style="padding-top:0">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-reveal>Para quem é</span>
+      <h2 class="h-section" id="who-title" data-split style="margin-top:18px">Para quem lavra o auto — e para quem vai lavrar.</h2>
+    </div>
+    <div class="who__grid">
+      <article class="who" data-reveal data-tilt-card><span class="tool__icon ic-navy"><svg aria-hidden="true"><use href="#i-badge"/></svg></span><h3>Agentes de trânsito</h3><p>Municipais e estaduais, na rotina da fiscalização.</p></article>
+      <article class="who" data-reveal style="--d:.06s" data-tilt-card><span class="tool__icon ic-blue"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><h3>Policiais militares</h3><p>Que fazem fiscalização de trânsito.</p></article>
+      <article class="who" data-reveal style="--d:.12s" data-tilt-card><span class="tool__icon ic-orange"><svg aria-hidden="true"><use href="#i-route"/></svg></span><h3>Policiais rodoviários</h3><p>E demais profissionais que lavram auto de infração.</p></article>
+      <article class="who" data-reveal style="--d:.18s" data-tilt-card><span class="tool__icon ic-green"><svg aria-hidden="true"><use href="#i-cap"/></svg></span><h3>Estudantes e instrutores</h3><p>De concursos da área, que precisam do CTB organizado.</p></article>
+    </div>
+    <div class="street">
+      <div class="street__card" data-reveal>
+        <h3>Pensado para ser usado na rua.</h3>
+        <p>Consulta em segundos, no meio da abordagem. Nada de menus confusos: você chega na resposta com poucos toques.</p>
+        <span class="mascot" data-mascot aria-hidden="true"></span>
+      </div>
+      <ul class="street__list">
+        <li data-reveal><svg aria-hidden="true"><use href="#i-layout"/></svg>Telas limpas</li>
+        <li data-reveal style="--d:.06s"><svg aria-hidden="true"><use href="#i-type"/></svg>Letras grandes</li>
+        <li data-reveal style="--d:.12s"><svg aria-hidden="true"><use href="#i-hash"/></svg>Busca por código, artigo ou palavra</li>
+        <li data-reveal style="--d:.18s"><svg aria-hidden="true"><use href="#i-zap"/></svg>Respostas diretas</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="duvidas" aria-labelledby="faq-title" style="padding-top:0">
+  <div class="container faq__grid">
+    <div>
+      <span class="eyebrow" data-reveal>Dúvidas frequentes</span>
+      <h2 class="h-section" id="faq-title" data-split style="margin-top:18px">Perguntas que a gente sempre ouve.</h2>
+      <div class="faq__contact" data-reveal>
+        <strong>Não achou sua resposta?</strong>
+        <p>Fale com o suporte. A gente responde por e-mail.</p>
+        <a class="btn btn--sm" href="mailto:suporte.safo@gmail.com"><svg aria-hidden="true"><use href="#i-mail"/></svg>suporte.safo@gmail.com</a>
+      </div>
+    </div>
+    <div class="faq__list" data-reveal>
+      <div class="faq-item acc">
+        <button class="acc__btn" type="button" aria-expanded="false">O assistente decide a autuação por mim?<svg aria-hidden="true"><use href="#i-down"/></svg></button>
+        <div class="acc__panel"><div><p class="acc__content">Não. O assistente é uma ferramenta de apoio: ele sugere o enquadramento e explica o porquê, mas a decisão final e a responsabilidade pelo auto são sempre do agente.</p></div></div>
+      </div>
+      <div class="faq-item acc">
+        <button class="acc__btn" type="button" aria-expanded="false">De onde vêm as respostas do assistente?<svg aria-hidden="true"><use href="#i-down"/></svg></button>
+        <div class="acc__panel"><div><p class="acc__content">Ele só trabalha com as 414 infrações e as orientações de fiscalização cadastradas no app — não inventa código. Primeiro escolhe as infrações possíveis, depois lê as fichas completas e as orientações de cada uma antes de responder. A tecnologia usa modelos Claude, da Anthropic, e foi testada com mais de 400 situações de fiscalização com resposta conferida.</p></div></div>
+      </div>
+      <div class="faq-item acc">
+        <button class="acc__btn" type="button" aria-expanded="false">E quando a situação tem várias condutas?<svg aria-hidden="true"><use href="#i-down"/></svg></button>
+        <div class="acc__panel"><div><p class="acc__content">Ele separa cada conduta (por exemplo: motorista sem cinto, sem CNH e com farol apagado), diz qual autuar e qual não autuar, e fecha com um resumo da abordagem.</p></div></div>
+      </div>
+      <div class="faq-item acc">
+        <button class="acc__btn" type="button" aria-expanded="false">Em quais celulares o Tá Safo funciona?<svg aria-hidden="true"><use href="#i-down"/></svg></button>
+        <div class="acc__panel"><div><p class="acc__content">No iPhone, pela App Store, e no Android, pelo Google Play.</p></div></div>
+      </div>
+      <div class="faq-item acc">
+        <button class="acc__btn" type="button" aria-expanded="false">Meus favoritos ficam salvos se eu trocar de celular?<svg aria-hidden="true"><use href="#i-down"/></svg></button>
+        <div class="acc__panel"><div><p class="acc__content">Sim. Os favoritos ficam separados em Infrações e Crimes e são sincronizados com a sua conta.</p></div></div>
+      </div>
+      <div class="faq-item acc">
+        <button class="acc__btn" type="button" aria-expanded="false">O app já tem a Resolução CONTRAN 1.031/2026?<svg aria-hidden="true"><use href="#i-down"/></svg></button>
+        <div class="acc__panel"><div><p class="acc__content">Sim. Entre as 50 resoluções resumidas está a nova Resolução 1.031/2026, sobre fiscalização de álcool e substâncias psicoativas, que substitui a 432/2013.</p></div></div>
+      </div>
+      <div class="faq-item acc">
+        <button class="acc__btn" type="button" aria-expanded="false">Como excluo a minha conta?<svg aria-hidden="true"><use href="#i-down"/></svg></button>
+        <div class="acc__panel"><div><p class="acc__content">Pelo próprio app, em Perfil → Excluir minha conta. A exclusão é permanente e não pode ser desfeita.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="baixar" aria-labelledby="cta-title">
+  <div class="container">
+    <div class="cta__card" data-reveal="scale">
+      <div>
+        <span class="eyebrow eyebrow--light">Baixe agora</span>
+        <h2 class="h-section" id="cta-title" style="margin-top:18px">Na próxima abordagem, você <span class="text-yellow">Tá Safo.</span></h2>
+        <p class="lead">Todo o CTB no bolso — com orientação de quem fiscaliza e um assistente com IA sempre a um toque.</p>
+        <div class="store-row">
+          <a class="store store--light" href="https://apps.apple.com/br/app/ta-safo/id6757497748" target="_blank" rel="noopener" data-magnetic>
+            <svg aria-hidden="true"><use href="#i-apple"/></svg><span class="store__txt"><small>Baixar na</small><strong>App Store</strong></span>
+          </a>
+          <a class="store store--light" href="https://play.google.com/store/apps/details?id=com.tasafo.app&amp;hl=pt_BR" target="_blank" rel="noopener" data-magnetic>
+            <svg aria-hidden="true"><use href="#i-play-store"/></svg><span class="store__txt"><small>Disponível no</small><strong>Google Play</strong></span>
+          </a>
+        </div>
+      </div>
+      <div class="cta__mascot" aria-hidden="true">
+        <div class="cta__ring"></div>
+        <span class="mascot" data-mascot></span>
+      </div>
+    </div>
+  </div>
+</section>
+
 </main>
-<script>
-  const SUPABASE_URL = 'https://rbbiifdalzrqjkzjspdt.supabase.co';
-  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJiYmlpZmRhbHpycWprempzcGR0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU2OTIxNjMsImV4cCI6MjA2MTI2ODE2M30.tB00KwkcSYy8eU9KLorVP8vHaXGvA64En5nJKt6-NAc';
-  const FUNCAO = SUPABASE_URL + '/functions/v1/resgatar-parceria';
-  const codigo = decodeURIComponent(location.hash.slice(1)).trim();
-  const el = (id) => document.getElementById(id);
 
-  const MENSAGENS = {
-    link_invalido: ['Link indispon√≠vel', 'Este link n√£o √© v√°lido.'],
-    nao_iniciado: ['Ainda n√£o come√ßou', 'Este link ainda n√£o est√° liberado.'],
-    prazo_encerrado: ['Prazo encerrado', 'O prazo para resgatar este benef√≠cio terminou.'],
-    limite_atingido: ['Vagas esgotadas', 'O limite de resgates deste benef√≠cio foi atingido.'],
-  };
+<!-- RODAPÉ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div>
+        <a href="#topo" class="brand"><img src="assets/img/logo-128.webp" width="40" height="40" alt="" />Tá Safo</a>
+        <p class="footer__about">O parceiro de bolso do agente de trânsito: consulta rápida do CTB, orientações de quando autuar e quando não autuar, e um assistente com inteligência artificial.</p>
+      </div>
+      <div>
+        <h3>Produto</h3>
+        <ul>
+          <li><a href="#assistente">Assistente com IA</a></li>
+          <li><a href="#ficha">Ficha da infração</a></li>
+          <li><a href="#ferramentas">Ferramentas de campo</a></li>
+          <li><a href="#tour">Tour do app</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Suporte</h3>
+        <ul>
+          <li><a href="mailto:suporte.safo@gmail.com">suporte.safo@gmail.com</a></li>
+          <li><a href="https://instagram.com/apptasafo" target="_blank" rel="noopener">Instagram @apptasafo</a></li>
+          <li><a href="termos_de_uso.html">Termos de uso</a></li>
+          <li><a href="politica_de_privacidade.html">Política de privacidade</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Baixar</h3>
+        <ul>
+          <li><a href="https://apps.apple.com/br/app/ta-safo/id6757497748" target="_blank" rel="noopener">App Store (iPhone)</a></li>
+          <li><a href="https://play.google.com/store/apps/details?id=com.tasafo.app&amp;hl=pt_BR" target="_blank" rel="noopener">Google Play (Android)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span id="year">2026</span> Tá Safo. Todos os direitos reservados.</span>
+      <span class="footer__claude"><svg width="16" height="16" aria-hidden="true"><use href="#i-sparkles"/></svg>Assistente powered by Claude AI</span>
+    </div>
+  </div>
+</footer>
 
-  function mostrar(id) {
-    for (const s of document.querySelectorAll('main section')) s.hidden = s.id !== id;
-  }
-  function invalido(tipo) {
-    const m = MENSAGENS[tipo] || ['Servi√ßo indispon√≠vel', 'N√£o foi poss√≠vel consultar agora. Tente de novo mais tarde.'];
-    el('invalido-titulo').textContent = m[0];
-    el('invalido-texto').textContent = m[1];
-    mostrar('invalido');
-  }
-  const data = (iso) => new Date(iso).toLocaleDateString('pt-BR', { timeZone: 'America/Sao_Paulo' });
+<button class="fab" id="fab" type="button" aria-label="Pergunte ao assistente — ir para a demonstração">
+  <span class="mascot" data-mascot></span>
+  <span class="fab__tip" aria-hidden="true">Pergunte ao assistente</span>
+</button>
 
-  async function chamar(corpo, token) {
-    const r = await fetch(FUNCAO, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        apikey: SUPABASE_ANON_KEY,
-        Authorization: 'Bearer ' + (token || SUPABASE_ANON_KEY),
-      },
-      body: JSON.stringify(corpo),
-    });
-    return r.json();
-  }
+<dialog class="lightbox" id="lightbox" aria-label="Tela do app ampliada">
+  <button class="round-btn lb-prev" type="button" aria-label="Tela anterior"><svg aria-hidden="true"><use href="#i-left"/></svg></button>
+  <figure class="lightbox__fig">
+    <div class="phone"><div class="phone__screen"><img id="lbImg" src="" width="720" height="1564" alt="" /></div></div>
+    <figcaption class="lightbox__cap" id="lbCap"></figcaption>
+  </figure>
+  <button class="round-btn lb-next" type="button" aria-label="Próxima tela"><svg aria-hidden="true"><use href="#i-right"/></svg></button>
+  <button class="round-btn lightbox__close" type="button" aria-label="Fechar"><svg aria-hidden="true"><use href="#i-x"/></svg></button>
+</dialog>
 
-  async function iniciar() {
-    if (!codigo) return invalido('link_invalido');
-    try {
-      const d = await chamar({ acao: 'info', codigo });
-      if (d.erro) return invalido(d.erro);
-      el('titulo').textContent = d.meses + ' meses do plano B√°sico, sem custo';
-      el('subtitulo').textContent = 'Benef√≠cio para ' + d.parceiro + '.';
-      el('prazo').textContent = 'Resgate at√© ' + data(d.resgate_fim) + '.';
-      mostrar('resgate');
-    } catch {
-      invalido('indisponivel');
-    }
-  }
+<div class="toast" id="toast" role="status" aria-live="polite"><svg aria-hidden="true"><use href="#i-check"/></svg><span>Texto copiado!</span></div>
 
-  function erro(texto) {
-    el('erro').textContent = texto;
-    el('erro').hidden = false;
-  }
-
-  el('formulario').addEventListener('submit', async (ev) => {
-    ev.preventDefault();
-    el('erro').hidden = true;
-    el('botao').disabled = true;
-    el('botao').textContent = 'Resgatando‚Ä¶';
-    try {
-      const r = await fetch(SUPABASE_URL + '/auth/v1/token?grant_type=password', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', apikey: SUPABASE_ANON_KEY },
-        body: JSON.stringify({ email: el('email').value.trim(), password: el('senha').value }),
-      });
-      const login = await r.json();
-      if (!r.ok) {
-        const c = login.error_code || login.code || '';
-        return erro(c === 'email_not_confirmed'
-          ? 'Confirme seu e-mail pelo link enviado ao criar a conta.'
-          : 'E-mail ou senha incorretos.');
-      }
-      const d = await chamar({ acao: 'resgatar', codigo }, login.access_token);
-      el('senha').value = '';
-      if (d.ok || d.erro === 'ja_resgatado') {
-        el('pronto-data').textContent = 'V√°lido at√© ' + data(d.acesso_ate) + '.';
-        el('pronto-loja').hidden = !d.assinatura_na_loja;
-        return mostrar('pronto');
-      }
-      if (MENSAGENS[d.erro]) return invalido(d.erro);
-      erro('N√£o foi poss√≠vel liberar agora. Tente de novo em alguns minutos.');
-    } catch {
-      erro('Sem conex√£o com o servidor. Tente de novo.');
-    } finally {
-      el('botao').disabled = false;
-      el('botao').textContent = 'Resgatar acesso';
-    }
-  });
-
-  iniciar();
-</script>
+<script src="assets/js/site.js" defer></script>
 </body>
 </html>
-
