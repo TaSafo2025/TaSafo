@@ -116,7 +116,7 @@
       const d = await chamar({ acao: 'info', codigo });
       if (d.erro) return invalido(d.erro);
       el('titulo').textContent = d.meses + ' meses do plano Básico, sem custo';
-      el('subtitulo').textContent = 'Benefício para ' + d.parceiro + '.';
+      el('subtitulo').textContent = 'Benefício exclusivo para quem recebeu este link.';
       el('prazo').textContent = 'Resgate até ' + data(d.resgate_fim) + '.';
       mostrar('resgate');
     } catch {
