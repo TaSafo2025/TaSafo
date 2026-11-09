@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src https://rbbiifdalzrqjkzjspdt.supabase.co; base-uri 'none'; form-action 'none'">
+<title>Tá Safo — Painel</title>
+<style>
+  :root { color-scheme:light; --marinho:#0B2545; --marinho2:#13315C; --amarelo:#F5B700; --fundo:#F3F5F8; --borda:#E2E8F0; --texto:#0F1B2D; --suave:#4A5568; --vermelho:#B42318; --verde:#067647; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--fundo); color:var(--texto); font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+  [hidden] { display:none !important; }
+  h1,h2,p { margin:0; }
+  button { font:inherit; cursor:pointer; color:inherit; }
+  button:focus-visible, input:focus-visible { outline:2px solid var(--marinho); outline-offset:2px; }
+
+  #login { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px 16px; }
+  .cartao-login { width:100%; max-width:400px; background:#fff; border:1px solid var(--borda); border-radius:18px; padding:28px 24px; }
+  .cartao-login h1 { font-size:24px; color:var(--marinho); line-height:1.2; }
+  .cartao-login p.sub { color:var(--suave); margin:6px 0 20px; }
+  label { display:block; margin:0 0 12px; font-weight:600; font-size:14px; }
+  input { display:block; width:100%; margin-top:6px; padding:13px 14px; font:inherit; color:inherit; background:#fff; border:1px solid var(--borda); border-radius:12px; }
+  .principal { width:100%; min-height:50px; border:0; border-radius:12px; background:var(--amarelo); color:var(--marinho); font-weight:700; }
+  .principal:disabled { opacity:.6; cursor:default; }
+  .erro { color:var(--vermelho); font-size:14px; margin-top:12px; }
+
+  header { background:var(--marinho); color:#fff; }
+  .topo { max-width:960px; margin:0 auto; padding:14px 16px; display:flex; align-items:center; gap:12px; }
+  .topo div { flex:1; min-width:0; }
+  .topo strong { display:block; font-size:18px; line-height:1.2; }
+  .topo small { color:#C6D2E3; font-size:13px; }
+  .topo button { background:transparent; border:1px solid #47628A; color:#fff; border-radius:10px; padding:7px 12px; font-size:14px; }
+  main { max-width:960px; margin:0 auto; padding:16px 16px 40px; }
+
+  .filtros { display:flex; flex-wrap:wrap; gap:10px 16px; margin-bottom:16px; }
+  .grupo { display:flex; background:#fff; border:1px solid var(--borda); border-radius:12px; padding:3px; }
+  .grupo button { border:0; background:transparent; border-radius:9px; padding:7px 12px; font-size:14px; color:var(--suave); white-space:nowrap; }
+  .grupo button.on { background:var(--marinho); color:#fff; font-weight:600; }
+
+  .numeros { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin-bottom:12px; }
+  @media (min-width:720px) { .numeros { grid-template-columns:repeat(4,minmax(0,1fr)); } }
+  .numero { background:#fff; border:1px solid var(--borda); border-radius:14px; padding:14px; }
+  .numero span { display:block; font-size:13px; color:var(--suave); line-height:1.3; }
+  .numero b { display:block; font-size:28px; line-height:1.2; margin-top:4px; color:var(--marinho); font-variant-numeric:tabular-nums; }
+  .numero em { display:block; font-style:normal; font-size:12px; color:var(--suave); margin-top:2px; }
+  .numero.destaque { background:var(--marinho); border-color:var(--marinho); }
+  .numero.destaque span, .numero.destaque em { color:#C6D2E3; }
+  .numero.destaque b { color:var(--amarelo); }
+
+  section.bloco { background:#fff; border:1px solid var(--borda); border-radius:14px; padding:16px; margin-top:12px; }
+  section.bloco h2 { font-size:17px; color:var(--marinho); line-height:1.3; }
+  .ajuda { color:var(--suave); font-size:14px; margin-top:2px; }
+  .legenda { display:flex; gap:14px; font-size:13px; color:var(--suave); margin-top:10px; }
+  .legenda i { display:inline-block; width:10px; height:10px; border-radius:2px; margin-right:5px; }
+  .cor-basico { background:var(--marinho2); }
+  .cor-tosafo { background:var(--amarelo); }
+
+  .grafico { display:flex; align-items:flex-end; gap:2px; height:150px; margin-top:12px; border-bottom:1px solid var(--borda); }
+  .coluna { flex:1 1 0; min-width:0; height:100%; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; border:0; background:transparent; padding:0; border-radius:4px 4px 0 0; }
+  .coluna:hover, .coluna.on { background:#EEF2F7; }
+  .coluna small { font-size:12px; color:var(--texto); line-height:1.3; font-variant-numeric:tabular-nums; }
+  .pilha { width:100%; max-width:34px; display:flex; flex-direction:column; gap:1px; }
+  .pilha div:first-child { border-radius:3px 3px 0 0; }
+  .eixo { display:flex; gap:2px; margin-top:4px; }
+  .eixo span { flex:1 1 0; min-width:0; text-align:center; font-size:11px; color:var(--suave); white-space:nowrap; overflow:visible; }
+  .detalhe { min-height:22px; margin-top:8px; font-size:14px; color:var(--texto); }
+
+  .tabela { width:100%; overflow-x:auto; margin-top:10px; }
+  table { width:100%; border-collapse:collapse; font-size:14px; font-variant-numeric:tabular-nums; }
+  th, td { padding:9px 6px; text-align:right; border-bottom:1px solid var(--borda); white-space:nowrap; }
+  th { color:var(--suave); font-weight:500; font-size:13px; }
+  th:first-child, td:first-child { text-align:left; }
+  tr:last-child td { border-bottom:0; }
+
+  .linhas { margin-top:10px; font-size:15px; }
+  .linhas div { display:flex; justify-content:space-between; gap:12px; padding:8px 0; border-bottom:1px solid var(--borda); }
+  .linhas div:last-child { border-bottom:0; }
+  .linhas b { font-weight:600; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .vazio { color:var(--suave); font-size:14px; padding:18px 0; text-align:center; }
+  .faixa-erro { background:#FEF3F2; border:1px solid #FECDCA; color:var(--vermelho); border-radius:12px; padding:12px 14px; font-size:14px; margin-bottom:12px; }
+  .rodape { color:var(--suave); font-size:13px; margin-top:14px; }
+</style>
+</head>
+<body>
+
+<div id="login">
+  <div class="cartao-login">
+    <h1>Painel Tá Safo</h1>
+    <p class="sub">Entre com a conta do app.</p>
+    <form id="formulario">
+      <label>E-mail
+        <input id="email" type="email" autocomplete="username" required>
+      </label>
+      <label>Senha
+        <input id="senha" type="password" autocomplete="current-password" required>
+      </label>
+      <button id="entrar" class="principal" type="submit">Entrar</button>
+      <p id="erro-login" class="erro" role="alert" hidden></p>
+    </form>
+  </div>
+</div>
+
+<div id="painel" hidden>
+  <header>
+    <div class="topo">
+      <div><strong>Assinaturas</strong><small id="atualizado"></small></div>
+      <button id="atualizar" type="button">Atualizar</button>
+      <button id="sair" type="button">Sair</button>
+    </div>
+  </header>
+  <main>
+    <p id="erro-painel" class="faixa-erro" role="alert" hidden></p>
+
+    <div class="filtros">
+      <div class="grupo" data-filtro="loja" role="group" aria-label="Loja">
+        <button type="button" data-v="" class="on">Todas</button>
+        <button type="button" data-v="APP_STORE">iPhone</button>
+        <button type="button" data-v="PLAY_STORE">Android</button>
+      </div>
+      <div class="grupo" data-filtro="plano" role="group" aria-label="Plano">
+        <button type="button" data-v="" class="on">Todos</button>
+        <button type="button" data-v="basico">Básico</button>
+        <button type="button" data-v="tosafo">Tô Safo</button>
+      </div>
+      <div class="grupo" data-filtro="dias" role="group" aria-label="Período">
+        <button type="button" data-v="7">7 dias</button>
+        <button type="button" data-v="30" class="on">30 dias</button>
+        <button type="button" data-v="90">90 dias</button>
+      </div>
+    </div>
+
+    <div class="numeros">
+      <div class="numero destaque"><span>Já pagando</span><b id="n-pagando"></b><em id="n-pagando-sub"></em></div>
+      <div class="numero"><span>Em teste grátis</span><b id="n-teste"></b><em>ainda sem cobrança</em></div>
+      <div class="numero"><span>Assinaram até hoje</span><b id="n-total"></b><em id="n-total-sub"></em></div>
+      <div class="numero"><span id="n-recebido-rotulo"></span><b id="n-recebido"></b><em>antes da comissão da loja</em></div>
+    </div>
+
+    <section class="bloco">
+      <h2>Quando os testes grátis acabam</h2>
+      <p class="ajuda">Nesse dia a loja faz a primeira cobrança, se a pessoa não cancelar.</p>
+      <div class="legenda"><span><i class="cor-basico"></i>Básico</span><span><i class="cor-tosafo"></i>Tô Safo</span></div>
+      <div id="g-fim"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>Novas assinaturas por dia</h2>
+      <div class="legenda"><span><i class="cor-basico"></i>Básico</span><span><i class="cor-tosafo"></i>Tô Safo</span></div>
+      <div id="g-novas"></div>
+    </section>
+
+    <section class="bloco">
+      <h2>Situação por plano</h2>
+      <div class="tabela"><table>
+        <thead><tr><th>Plano</th><th>Em teste</th><th>Pagando</th><th>Cancelou</th><th>Falhou</th><th>Saiu</th></tr></thead>
+        <tbody id="t-planos"></tbody>
+      </table></div>
+      <p class="ajuda" style="margin-top:8px">Cancelou: não renova, mas ainda usa até o fim do período. Falhou: a loja não conseguiu cobrar. Saiu: o acesso já terminou.</p>
+    </section>
+
+    <section class="bloco">
+      <h2>Dinheiro e teste grátis</h2>
+      <div class="linhas">
+        <div><span>Receita por mês com quem paga hoje</span><b id="l-mensal"></b></div>
+        <div><span>Se todos em teste continuarem</span><b id="l-potencial"></b></div>
+        <div><span>Teste grátis que virou pagamento</span><b id="l-conversao"></b></div>
+        <div><span>Cancelaram durante o teste</span><b id="l-cancelou-teste"></b></div>
+        <div><span>Cancelaram depois de pagar</span><b id="l-cancelou-pago"></b></div>
+        <div><span>Acesso por parceria</span><b id="l-parceria"></b></div>
+      </div>
+      <p class="rodape" id="rodape"></p>
+    </section>
+  </main>
+</div>
+
+<script>
+  const SUPABASE_URL = 'https://rbbiifdalzrqjkzjspdt.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJiYmlpZmRhbHpycWprempzcGR0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU2OTIxNjMsImV4cCI6MjA2MTI2ODE2M30.tB00KwkcSYy8eU9KLorVP8vHaXGvA64En5nJKt6-NAc';
+  const FUNCAO = SUPABASE_URL + '/functions/v1/painel-assinaturas';
+  const CHAVE = 'painel_tasafo_sessao';
+  const NOME_PLANO = { basico: 'Básico', tosafo: 'Tô Safo' };
+  const el = (id) => document.getElementById(id);
+
+  let acesso = null;
+  let dados = null;
+  const filtros = { loja: '', plano: '', dias: 30 };
+
+  function lembrar(valor) {
+    try {
+      if (valor) localStorage.setItem(CHAVE, valor); else localStorage.removeItem(CHAVE);
+    } catch (_) {}
+  }
+  function lembrado() {
+    try { return localStorage.getItem(CHAVE); } catch (_) { return null; }
+  }
+
+  function mostrar(painel) {
+    el('login').hidden = painel;
+    el('painel').hidden = !painel;
+  }
+  function erroLogin(texto) {
+    el('erro-login').textContent = texto;
+    el('erro-login').hidden = !texto;
+  }
+  function erroPainel(texto) {
+    el('erro-painel').textContent = texto;
+    el('erro-painel').hidden = !texto;
+  }
+
+  async function pedirToken(tipo, corpo) {
+    const r = await fetch(SUPABASE_URL + '/auth/v1/token?grant_type=' + tipo, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', apikey: SUPABASE_ANON_KEY },
+      body: JSON.stringify(corpo),
+    });
+    if (!r.ok) return false;
+    const sessao = await r.json();
+    acesso = sessao.access_token;
+    lembrar(sessao.refresh_token);
+    return true;
+  }
+
+  function encerrar(mensagem) {
+    acesso = null;
+    dados = null;
+    lembrar(null);
+    mostrar(false);
+    erroLogin(mensagem || '');
+  }
+
+  async function chamarFuncao() {
+    return fetch(FUNCAO, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        apikey: SUPABASE_ANON_KEY,
+        Authorization: 'Bearer ' + acesso,
+      },
+      body: '{}',
+    });
+  }
+
+  async function carregar() {
+    el('atualizar').disabled = true;
+    el('atualizar').textContent = 'Atualizando…';
+    try {
+      let r = await chamarFuncao();
+      if (r.status === 401) {
+        const guardado = lembrado();
+        if (guardado && await pedirToken('refresh_token', { refresh_token: guardado })) {
+          r = await chamarFuncao();
+        }
+      }
+      if (r.status === 401) return encerrar('Sua sessão terminou. Entre de novo.');
+      if (r.status === 403) return encerrar('Esta conta não tem acesso ao painel.');
+      if (!r.ok) throw new Error(String(r.status));
+      dados = await r.json();
+      mostrar(true);
+      erroPainel('');
+      desenhar();
+    } catch (_) {
+      mostrar(true);
+      erroPainel('Não consegui buscar os números. Confira a internet e toque em Atualizar.');
+    } finally {
+      el('atualizar').disabled = false;
+      el('atualizar').textContent = 'Atualizar';
+    }
+  }
+
+  const reais = (v) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  const inteiro = (v) => v.toLocaleString('pt-BR');
+  const curto = (d) => d.slice(8, 10) + '/' + d.slice(5, 7);
+
+  function somarDias(dia, n) {
+    const d = new Date(dia + 'T12:00:00Z');
+    d.setUTCDate(d.getUTCDate() + n);
+    return d.toISOString().slice(0, 10);
+  }
+
+  function passa(item) {
+    return (!filtros.loja || item.l === filtros.loja) && (!filtros.plano || item.p === filtros.plano);
+  }
+
+  function grafico(destino, dias, itens, campo) {
+    const cont = {};
+    for (const dia of dias) cont[dia] = { basico: 0, tosafo: 0 };
+    for (const item of itens) {
+      if (cont[item[campo]] && (item.p === 'basico' || item.p === 'tosafo')) cont[item[campo]][item.p] += 1;
+    }
+    const totalDe = (d) => cont[d].basico + cont[d].tosafo;
+    const maior = Math.max(...dias.map(totalDe));
+    destino.replaceChildren();
+    if (maior === 0) {
+      const v = document.createElement('p');
+      v.className = 'vazio';
+      v.textContent = 'Nada neste período.';
+      destino.append(v);
+      return;
+    }
+
+    const barras = document.createElement('div');
+    barras.className = 'grafico';
+    const detalhe = document.createElement('p');
+    detalhe.className = 'detalhe';
+    const eixo = document.createElement('div');
+    eixo.className = 'eixo';
+    const passo = Math.max(1, Math.ceil(dias.length / 7));
+
+    function texto(dia) {
+      const c = cont[dia];
+      return curto(dia) + ': ' + totalDe(dia) + ' (Básico ' + c.basico + ', Tô Safo ' + c.tosafo + ')';
+    }
+
+    dias.forEach((dia, i) => {
+      const total = totalDe(dia);
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'coluna';
+      b.setAttribute('aria-label', texto(dia));
+      b.addEventListener('click', () => {
+        barras.querySelectorAll('.on').forEach((x) => x.classList.remove('on'));
+        b.classList.add('on');
+        detalhe.textContent = texto(dia);
+      });
+      if (total > 0 && dias.length <= 31) {
+        const n = document.createElement('small');
+        n.textContent = total;
+        b.append(n);
+      }
+      const pilha = document.createElement('div');
+      pilha.className = 'pilha';
+      for (const plano of ['tosafo', 'basico']) {
+        if (!cont[dia][plano]) continue;
+        const parte = document.createElement('div');
+        parte.className = 'cor-' + plano;
+        parte.style.height = Math.max(3, Math.round(cont[dia][plano] / maior * 118)) + 'px';
+        pilha.append(parte);
+      }
+      b.append(pilha);
+      barras.append(b);
+
+      const rotulo = document.createElement('span');
+      rotulo.textContent = i % passo === 0 ? curto(dia) : '';
+      eixo.append(rotulo);
+    });
+
+    detalhe.textContent = 'Toque em uma barra para ver o dia.';
+    destino.append(barras, eixo, detalhe);
+  }
+
+  function linhaPlano(plano, lista) {
+    const conta = (...s) => lista.filter((a) => a.p === plano && s.includes(a.s)).length;
+    const tr = document.createElement('tr');
+    const celulas = [
+      NOME_PLANO[plano], conta('teste'), conta('pagando'),
+      conta('cancelou_teste', 'cancelou_pagando'), conta('problema'),
+      conta('saiu_teste', 'saiu_pagando'),
+    ];
+    for (const valor of celulas) {
+      const td = document.createElement('td');
+      td.textContent = valor;
+      tr.append(td);
+    }
+    return tr;
+  }
+
+  function desenhar() {
+    if (!dados) return;
+    const lista = dados.assinantes.filter(passa);
+    const pagas = lista.filter((a) => a.s !== 'parceria' && a.s !== 'parceria_fim');
+    const conta = (...s) => lista.filter((a) => s.includes(a.s)).length;
+    const preco = (a) => dados.precos[a.p] || 0;
+    const soma = (arr) => Math.round(arr.reduce((t, a) => t + preco(a), 0) * 100) / 100;
+
+    const inicioPeriodo = somarDias(dados.hoje, -(filtros.dias - 1));
+    const eventos = dados.eventos.filter(passa);
+    const noPeriodo = eventos.filter((e) => e.d >= inicioPeriodo);
+    const recebido = Math.round(noPeriodo.reduce((t, e) => t + (e.v || 0), 0) * 100) / 100;
+    const outrasMoedas = noPeriodo.filter((e) => e.v === null).length;
+
+    const pagando = lista.filter((a) => a.s === 'pagando');
+    const emTeste = lista.filter((a) => a.s === 'teste');
+    el('n-pagando').textContent = inteiro(pagando.length);
+    el('n-pagando-sub').textContent = reais(soma(pagando)) + ' por mês';
+    el('n-teste').textContent = inteiro(emTeste.length);
+    el('n-total').textContent = inteiro(pagas.length);
+    el('n-total-sub').textContent = filtros.loja || filtros.plano
+      ? 'com os filtros acima'
+      : inteiro(dados.contas) + ' contas no app';
+    el('n-recebido-rotulo').textContent = 'Recebido em ' + filtros.dias + ' dias';
+    el('n-recebido').textContent = reais(recebido);
+
+    const proximos = Array.from({ length: 14 }, (_, i) => somarDias(dados.hoje, i));
+    grafico(el('g-fim'), proximos, emTeste, 'e');
+    const passados = Array.from({ length: filtros.dias }, (_, i) => somarDias(inicioPeriodo, i));
+    grafico(el('g-novas'), passados, pagas, 'i');
+
+    const corpo = el('t-planos');
+    corpo.replaceChildren();
+    for (const plano of ['basico', 'tosafo']) {
+      if (!filtros.plano || filtros.plano === plano) corpo.append(linhaPlano(plano, pagas));
+    }
+
+    const viraram = eventos.filter((e) => e.c).length;
+    const naoViraram = conta('saiu_teste');
+    el('l-mensal').textContent = reais(soma(pagando));
+    el('l-potencial').textContent = reais(soma(pagando.concat(emTeste)));
+    el('l-conversao').textContent = viraram + naoViraram === 0
+      ? 'ainda sem dados'
+      : viraram + ' de ' + (viraram + naoViraram) + ' (' + Math.round(viraram / (viraram + naoViraram) * 100) + '%)';
+    el('l-cancelou-teste').textContent = conta('cancelou_teste');
+    el('l-cancelou-pago').textContent = conta('cancelou_pagando');
+    el('l-parceria').textContent = conta('parceria');
+
+    el('atualizado').textContent = 'Atualizado às ' + new Date(dados.gerado_em)
+      .toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', timeZone: 'America/Sao_Paulo' });
+    el('rodape').textContent = 'Valores brutos, antes da comissão das lojas. Compras de teste ficam de fora.'
+      + (outrasMoedas ? ' ' + outrasMoedas + ' pagamento(s) em moeda estrangeira não entraram no total.' : '');
+  }
+
+  document.querySelectorAll('.grupo').forEach((grupo) => {
+    grupo.addEventListener('click', (ev) => {
+      const b = ev.target.closest('button');
+      if (!b) return;
+      grupo.querySelectorAll('button').forEach((x) => x.classList.toggle('on', x === b));
+      const nome = grupo.dataset.filtro;
+      filtros[nome] = nome === 'dias' ? Number(b.dataset.v) : b.dataset.v;
+      desenhar();
+    });
+  });
+
+  el('atualizar').addEventListener('click', carregar);
+
+  el('sair').addEventListener('click', () => {
+    const token = acesso;
+    if (token) {
+      fetch(SUPABASE_URL + '/auth/v1/logout?scope=local', {
+        method: 'POST',
+        headers: { apikey: SUPABASE_ANON_KEY, Authorization: 'Bearer ' + token },
+      }).catch(() => {});
+    }
+    encerrar('');
+    el('senha').value = '';
+  });
+
+  el('formulario').addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    erroLogin('');
+    el('entrar').disabled = true;
+    try {
+      const ok = await pedirToken('password', {
+        email: el('email').value.trim(),
+        password: el('senha').value,
+      });
+      if (!ok) return erroLogin('E-mail ou senha incorretos.');
+      el('senha').value = '';
+      await carregar();
+    } catch (_) {
+      erroLogin('Sem conexão. Tente de novo.');
+    } finally {
+      el('entrar').disabled = false;
+    }
+  });
+
+  (async () => {
+    const guardado = lembrado();
+    if (!guardado) return;
+    try {
+      if (await pedirToken('refresh_token', { refresh_token: guardado })) await carregar();
+      else lembrar(null);
+    } catch (_) {}
+  })();
+</script>
+</body>
+</html>
