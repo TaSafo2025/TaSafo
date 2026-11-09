@@ -2,11 +2,17 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Painel">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0B2545">
+<link rel="apple-touch-icon" href="/app_icon.png">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="googlebot" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src https://rbbiifdalzrqjkzjspdt.supabase.co; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src https://rbbiifdalzrqjkzjspdt.supabase.co; base-uri 'none'; form-action 'none'">
 <title>Tá Safo — Painel</title>
 <style>
   :root { color-scheme:light; --marinho:#0B2545; --marinho2:#13315C; --amarelo:#F5B700; --fundo:#F3F5F8; --borda:#E2E8F0; --texto:#0F1B2D; --suave:#4A5568; --vermelho:#B42318; --verde:#067647; }
@@ -28,12 +34,12 @@
   .erro { color:var(--vermelho); font-size:14px; margin-top:12px; }
 
   header { background:var(--marinho); color:#fff; }
-  .topo { max-width:960px; margin:0 auto; padding:14px 16px; display:flex; align-items:center; gap:12px; }
+  .topo { max-width:960px; margin:0 auto; padding:calc(14px + env(safe-area-inset-top)) 16px 14px; display:flex; align-items:center; gap:12px; }
   .topo div { flex:1; min-width:0; }
   .topo strong { display:block; font-size:18px; line-height:1.2; }
   .topo small { color:#C6D2E3; font-size:13px; }
   .topo button { background:transparent; border:1px solid #47628A; color:#fff; border-radius:10px; padding:7px 12px; font-size:14px; }
-  main { max-width:960px; margin:0 auto; padding:16px 16px 40px; }
+  main { max-width:960px; margin:0 auto; padding:16px 16px calc(40px + env(safe-area-inset-bottom)); }
 
   .filtros { display:flex; flex-wrap:wrap; gap:10px 16px; margin-bottom:16px; }
   .grupo { display:flex; background:#fff; border:1px solid var(--borda); border-radius:12px; padding:3px; }
